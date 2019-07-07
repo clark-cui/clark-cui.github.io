@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>my first blog | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="笔记型博客">
+  <meta name="description" content="JS挖坑填坑Dom事件流（冒泡） 事件的3个阶段：捕获、目标、冒泡     捕获 事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点    目标 事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发   冒泡 事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点     当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my first blog">
-<meta property="og:url" content="http://yoursite.com/2019/07/03/my-first-blog/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/JS挖坑填坑/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="笔记型博客">
+<meta property="og:description" content="JS挖坑填坑Dom事件流（冒泡） 事件的3个阶段：捕获、目标、冒泡     捕获 事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点    目标 事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发   冒泡 事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点     当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-02T16:07:06.786Z">
+<meta property="og:image" content="c:%5CUsers%5Ccuirongchuan%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562483050109.png">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000011806323?w=800&h=737">
+<meta property="og:updated_time" content="2019-07-07T17:31:28.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my first blog">
-<meta name="twitter:description" content="笔记型博客">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="JS挖坑填坑Dom事件流（冒泡） 事件的3个阶段：捕获、目标、冒泡     捕获 事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点    目标 事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发   冒泡 事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点     当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是">
+<meta name="twitter:image" content="c:%5CUsers%5Ccuirongchuan%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562483050109.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -138,27 +141,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-my-first-blog" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JS挖坑填坑" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      my first blog
-    </h1>
-  
-
-        
-        <a href="/2019/07/03/my-first-blog/" class="archive-article-date">
-  	<time datetime="2019-07-02T16:07:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="JS挖坑填坑"><a href="#JS挖坑填坑" class="headerlink" title="JS挖坑填坑"></a>JS挖坑填坑</h1><h5 id="Dom事件流（冒泡）"><a href="#Dom事件流（冒泡）" class="headerlink" title="Dom事件流（冒泡）"></a>Dom事件流（冒泡）</h5><blockquote>
+<p>事件的3个阶段：捕获、目标、冒泡</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>捕获</th>
+<th>事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目标</td>
+<td>事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发</td>
+</tr>
+<tr>
+<td>冒泡</td>
+<td>事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p> 当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是该节点的某个子节点触发事件，由于事件冒泡，该DOM节点事件也会触发，执行了回调函数，这样就违背了最初的本意了。所以需要阻止冒泡。</p>
+</blockquote>
+<p><img src="C:%5CUsers%5Ccuirongchuan%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562483050109.png" alt="1562483050109"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addEventListener(<span class="string">"eventName"</span>, doSomething, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 第三个Boolean参数为true时, 表示是否在捕获阶段调用事件处理程序（老版dom），新版dom中第三个参数未option，可选很多参数，详见MDN。</p>
+<h6 id="阻止冒泡"><a href="#阻止冒泡" class="headerlink" title="阻止冒泡"></a>阻止冒泡</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">e</span>) </span>&#123; </span><br><span class="line"><span class="comment">//如果提供了事件对象，则这是一个非IE浏览器 </span></span><br><span class="line"><span class="keyword">if</span> ( e &amp;&amp; e.stopPropagation ) </span><br><span class="line">    <span class="comment">//因此它支持W3C的stopPropagation()方法 </span></span><br><span class="line">    e.stopPropagation(); </span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="comment">//否则，我们需要使用IE的方式来取消事件冒泡 </span></span><br><span class="line">    <span class="built_in">window</span>.event.cancelBubble = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vue中有修饰符.stop</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//阻止浏览器的默认行为 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopDefault</span>(<span class="params"> e </span>) </span>&#123; </span><br><span class="line">    <span class="comment">//阻止默认浏览器动作(W3C) </span></span><br><span class="line">    <span class="keyword">if</span> ( e &amp;&amp; e.preventDefault ) </span><br><span class="line">        e.preventDefault(); </span><br><span class="line">    <span class="comment">//IE中阻止函数器默认动作的方式 </span></span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="built_in">window</span>.event.returnValue = <span class="literal">false</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><h6 id="ES5-原型链"><a href="#ES5-原型链" class="headerlink" title="ES5 原型链"></a>ES5 原型链</h6><p><a href="https://segmentfault.com/a/1190000011801127" target="_blank" rel="noopener">_proto与prototype</a></p>
+<p><a href="https://wangdoc.com/javascript/oop/prototype.html" target="_blank" rel="noopener">阮一峰</a></p>
+<p><img src="https://segmentfault.com/img/remote/1460000011806323?w=800&h=737" alt="proto"></p>
+<h6 id="ES6-class"><a href="#ES6-class" class="headerlink" title="ES6 class"></a>ES6 class</h6>
       
 
       
@@ -247,7 +268,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/03/my-first-blog/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/08/JS挖坑填坑/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -261,7 +282,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/08/自用布局整理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/08/git常用整理/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -271,8 +292,8 @@
     </a>
   
   
-    <a href="/2019/07/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/07/08/linux常用整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   
