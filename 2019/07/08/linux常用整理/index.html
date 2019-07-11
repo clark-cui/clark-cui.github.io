@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="linux自用整理命令搜索命令搜索 文件路径 Unix使用斜杆/ 作为路径分隔符，而web应用最新使用在Unix系统上面，所以目前所有的网络地址都采用 斜杆/ 作为分隔符。 Windows由于使用 斜杆/ 作为DOS命令提示符的参数标志了，为了不混淆，所以采用 反斜杠\ 作为路径分隔符。所以目前windows系统上的文件浏览器都是用 反斜杠\ 作为路径分隔符。随着发展，DOS系统已经被淘汰了，命令">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T17:31:06.446Z">
+<meta property="og:updated_time" content="2019-07-10T08:45:24.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
 <meta name="twitter:description" content="linux自用整理命令搜索命令搜索 文件路径 Unix使用斜杆/ 作为路径分隔符，而web应用最新使用在Unix系统上面，所以目前所有的网络地址都采用 斜杆/ 作为分隔符。 Windows由于使用 斜杆/ 作为DOS命令提示符的参数标志了，为了不混淆，所以采用 反斜杠\ 作为路径分隔符。所以目前windows系统上的文件浏览器都是用 反斜杠\ 作为路径分隔符。随着发展，DOS系统已经被淘汰了，命令">
@@ -142,28 +142,135 @@
 <p>Unix使用斜杆/ 作为路径分隔符，而web应用最新使用在Unix系统上面，所以目前所有的网络地址都采用 斜杆/ 作为分隔符。</p>
 <p>Windows由于使用 斜杆/ 作为DOS命令提示符的参数标志了，为了不混淆，所以采用 反斜杠\ 作为路径分隔符。所以目前windows系统上的文件浏览器都是用 反斜杠\ 作为路径分隔符。随着发展，DOS系统已经被淘汰了，命令提示符也用的很少，斜杆和反斜杠在大多数情况下可以互换，没有影响。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\       //在windows中可以用来连接文件路径（常用于本地文件）</span><br><span class="line">/       //在linux与unix中用来连接文件路径（目前web应用都用在unix系统上，故网址都用/）</span><br></pre></td></tr></table></figure>
-
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\</code></td>
+<td>在windows中可以用来连接文件路径（常用于本地文件）</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>在linux与unix中用来连接文件路径（目前web应用都用在unix系统上，故网址都用/）</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p> 在一般语言编程里，用”\“来表示转义，例如”\n”表示换行。如果我们在网络里使用”\&quot;，就会被解释器解释为转义符，而不是”反斜杠”,如果你非得用”\“在网络里头表示路径，那你得每次都是用”\\“，告诉解释器”&quot;只是单纯的”反斜杠”，而不是转义字符。</p>
 </blockquote>
-<h5 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./  当前同级目录</span><br><span class="line">../ 上一级目录</span><br><span class="line">/   根目录（盘符）</span><br></pre></td></tr></table></figure>
-
-<h5 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E:         //切换盘符</span><br><span class="line">cd         //进入文件夹</span><br><span class="line">cd ..      //返回上级目录 （.表示当前目录，..表示上级目录）</span><br><span class="line">cd ../..   //返回上两级目录</span><br></pre></td></tr></table></figure>
-
+<h5 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h5><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>./</code></td>
+<td>当前同级目录</td>
+</tr>
+<tr>
+<td><code>../</code></td>
+<td>上一级目录</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>根目录（盘符）</td>
+</tr>
+</tbody></table>
+<h5 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h5><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>E:</code></td>
+<td>切换盘符</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>进入文件夹</td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>返回上级目录 （.表示当前目录，..表示上级目录）</td>
+</tr>
+<tr>
+<td><code>cd ../..</code></td>
+<td>返回上两级目录</td>
+</tr>
+</tbody></table>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -m 700 /usr/meng/test    //(m是mode，-m建立目录的同时设置目录的权限。</span><br><span class="line">在目录/usr/meng下建立子目录test，并且只有文件主有读、写和执行权限，其他人无权访问)</span><br><span class="line"></span><br><span class="line">mkdir -p-m 750 bin/os_1      //（-p若所要建立目录的上层目录目前尚未建立，则会一并建立上层目录。</span><br><span class="line">在当前目录中建立bin和bin下的os_1目录，权限设置为文件主可读、写、执行，同组用户可读和执行，其他用户无权访问）</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls (linux)         //显示文件列表</span><br><span class="line">dir(windows)       //显示文件列表</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pwd(linux)         //显示当前路径</span><br><span class="line">chdir(windows)     //显示当前路径</span><br><span class="line">dir  (windows)     //滑倒顶部也能显示当前路径</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat（linux）        //查看内容，不修改文件</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim(windows要先安装，并添加环境变量) 文本编辑</span><br></pre></td></tr></table></figure>
-
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ls(linux)</code></td>
+<td>显示文件列表</td>
+</tr>
+<tr>
+<td><code>dir(windows)</code></td>
+<td>显示文件列表</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pwd(linux)</code></td>
+<td>显示当前路径</td>
+</tr>
+<tr>
+<td><code>chdir(windows)</code></td>
+<td>显示当前路径</td>
+</tr>
+<tr>
+<td><code>dir  (windows)</code></td>
+<td>滑倒顶部也能显示当前路径</td>
+</tr>
+<tr>
+<td><code>cat（linux）</code></td>
+<td>查看内容，不修改文件</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>vim(windows要先安装，并添加环境变量) 文本编辑</p>
+</blockquote>
 <p> <a href="https://github.com/vim/vim" target="_blank" rel="noopener">vim/github</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm(linux)                  //删除文件</span><br><span class="line">rm -f                      //强制删除文件或目录</span><br><span class="line">rm -r                      //递归处理，将指定目录下的所有文件与子目录一并处理</span><br></pre></td></tr></table></figure>
-
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rm(linux)</code></td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td><code>rm -f</code></td>
+<td>强制删除文件或目录</td>
+</tr>
+<tr>
+<td><code>rm -r</code></td>
+<td>递归处理，将指定目录下的所有文件与子目录一并处理</td>
+</tr>
+</tbody></table>
 
       
 
