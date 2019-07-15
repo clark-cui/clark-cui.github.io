@@ -58,16 +58,18 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/tags/随笔/随笔.md">随笔</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">标签栏</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">找我玩</a>
     			
             
 		</nav>
@@ -102,6 +104,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -116,7 +120,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/随笔.md">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -132,6 +138,132 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-NPM自用整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/08/NPM自用整理/">NPM自用整理</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/08/NPM自用整理/" class="archive-article-date">
+  	<time datetime="2019-07-07T17:31:57.600Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="NPM自用整理"><a href="#NPM自用整理" class="headerlink" title="NPM自用整理"></a>NPM自用整理</h1><p><a href="https://www.npmjs.cn/" target="_blank" rel="noopener">npm中文文档</a></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>npm init</code></td>
+<td>初始化 生成package.json</td>
+</tr>
+<tr>
+<td><code>ctrl +c</code></td>
+<td>撤销</td>
+</tr>
+<tr>
+<td><code>npm i</code></td>
+<td>下载依赖</td>
+</tr>
+<tr>
+<td><code>npm i --save</code></td>
+<td>下载依赖并存到生产依赖中</td>
+</tr>
+<tr>
+<td><code>npm i --save dev</code></td>
+<td>下载依赖并存到开发依赖中</td>
+</tr>
+<tr>
+<td><code>npm uninstall -g</code></td>
+<td>全局删除包</td>
+</tr>
+<tr>
+<td><code>npm uninstall</code></td>
+<td>删除包</td>
+</tr>
+<tr>
+<td><code>npm uninstall --save</code></td>
+<td>生产依赖卸载包</td>
+</tr>
+<tr>
+<td><code>npm uninstall --save dev</code></td>
+<td>开发依赖卸载包</td>
+</tr>
+<tr>
+<td><code>npm undate</code></td>
+<td>更新包</td>
+</tr>
+<tr>
+<td><code>npm outdated</code></td>
+<td>是否有包过期</td>
+</tr>
+</tbody></table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">npm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/08/NPM自用整理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-my-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -321,11 +453,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">标签栏</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">找我玩</a></li>
       
         
     </ul>
@@ -366,11 +498,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文档</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">文档</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -433,7 +565,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">毕业于成电&lt;br&gt;喜欢敲敲敲&lt;br&gt;&lt;br&gt;请大哥多多指点</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">毕业于成电&lt;br&gt;喜欢敲敲敲&lt;br&gt;邮箱：cuirongchuan@163.com&lt;br&gt;电话:13648029018</div>
   	  	
     	</section>
     
