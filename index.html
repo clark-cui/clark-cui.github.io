@@ -58,7 +58,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/index.html">随笔</a></li>
+				<li><a href="/tags/初衷/index.html">初衷</a></li>
 	        
 			</ul>
 		</nav>
@@ -122,7 +122,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/index.html">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/初衷/index.html">初衷</a></li>
 		        
 				</ul>
 			</nav>
@@ -139,213 +139,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-linux常用整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/13/linux常用整理/">linux自用整理</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/13/linux常用整理/" class="archive-article-date">
-  	<time datetime="2019-07-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="linux自用整理"><a href="#linux自用整理" class="headerlink" title="linux自用整理"></a>linux自用整理</h1><h5 id="命令搜索"><a href="#命令搜索" class="headerlink" title="命令搜索"></a>命令搜索</h5><p><a href="http://man.linuxde.net/" target="_blank" rel="noopener">命令搜索</a></p>
-<h5 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h5><blockquote>
-<p>Unix使用斜杆/ 作为路径分隔符，而web应用最新使用在Unix系统上面，所以目前所有的网络地址都采用 斜杆/ 作为分隔符。</p>
-<p>Windows由于使用 斜杆/ 作为DOS命令提示符的参数标志了，为了不混淆，所以采用 反斜杠\ 作为路径分隔符。所以目前windows系统上的文件浏览器都是用 反斜杠\ 作为路径分隔符。随着发展，DOS系统已经被淘汰了，命令提示符也用的很少，斜杆和反斜杠在大多数情况下可以互换，没有影响。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>\</code></td>
-<td>在windows中可以用来连接文件路径（常用于本地文件）</td>
-</tr>
-<tr>
-<td><code>/</code></td>
-<td>在linux与unix中用来连接文件路径（目前web应用都用在unix系统上，故网址都用/）</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p> 在一般语言编程里，用”\“来表示转义，例如”\n”表示换行。如果我们在网络里使用”\&quot;，就会被解释器解释为转义符，而不是”反斜杠”,如果你非得用”\“在网络里头表示路径，那你得每次都是用”\\“，告诉解释器”&quot;只是单纯的”反斜杠”，而不是转义字符。</p>
-</blockquote>
-<h5 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h5><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>./</code></td>
-<td>当前同级目录</td>
-</tr>
-<tr>
-<td><code>../</code></td>
-<td>上一级目录</td>
-</tr>
-<tr>
-<td><code>/</code></td>
-<td>根目录（盘符）</td>
-</tr>
-</tbody></table>
-<h5 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h5><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>E:</code></td>
-<td>切换盘符</td>
-</tr>
-<tr>
-<td><code>cd</code></td>
-<td>进入文件夹</td>
-</tr>
-<tr>
-<td><code>cd ..</code></td>
-<td>返回上级目录 （.表示当前目录，..表示上级目录）</td>
-</tr>
-<tr>
-<td><code>cd ../..</code></td>
-<td>返回上两级目录</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -m 700 /usr/meng/test    //(m是mode，-m建立目录的同时设置目录的权限。</span><br><span class="line">在目录/usr/meng下建立子目录test，并且只有文件主有读、写和执行权限，其他人无权访问)</span><br><span class="line"></span><br><span class="line">mkdir -p-m 750 bin/os_1      //（-p若所要建立目录的上层目录目前尚未建立，则会一并建立上层目录。</span><br><span class="line">在当前目录中建立bin和bin下的os_1目录，权限设置为文件主可读、写、执行，同组用户可读和执行，其他用户无权访问）</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>ls(linux)</code></td>
-<td>显示文件列表</td>
-</tr>
-<tr>
-<td><code>dir(windows)</code></td>
-<td>显示文件列表</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>pwd(linux)</code></td>
-<td>显示当前路径</td>
-</tr>
-<tr>
-<td><code>chdir(windows)</code></td>
-<td>显示当前路径</td>
-</tr>
-<tr>
-<td><code>dir  (windows)</code></td>
-<td>滑倒顶部也能显示当前路径</td>
-</tr>
-<tr>
-<td><code>cat（linux）</code></td>
-<td>查看内容，不修改文件</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>vim(windows要先安装，并添加环境变量) 文本编辑</p>
-</blockquote>
-<p> <a href="https://github.com/vim/vim" target="_blank" rel="noopener">vim/github</a></p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>rm(linux)</code></td>
-<td>删除文件</td>
-</tr>
-<tr>
-<td><code>rm -f</code></td>
-<td>强制删除文件或目录</td>
-</tr>
-<tr>
-<td><code>rm -r</code></td>
-<td>递归处理，将指定目录下的所有文件与子目录一并处理</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/13/linux常用整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-自用布局整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -353,13 +146,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/13/自用布局整理/">自用布局整理（更新中）</a>
+      <a class="article-title" href="/2019/07/01/自用布局整理/">自用布局整理（更新中）</a>
     </h1>
   
 
         
-        <a href="/2019/07/13/自用布局整理/" class="archive-article-date">
-  	<time datetime="2019-07-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
+        <a href="/2019/07/01/自用布局整理/" class="archive-article-date">
+  	<time datetime="2019-07-01T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
 </a>
         
       </header>
@@ -415,7 +208,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/13/自用布局整理/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/01/自用布局整理/">展开全文 >></a>
         </p>
       
 
@@ -445,28 +238,28 @@
 
 
   
-    <article id="post-随笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/13/随笔/">初衷</a>
+      <a class="article-title" href="/2019/06/13/通信/">通信</a>
     </h1>
   
 
         
-        <a href="/2019/07/13/随笔/" class="archive-article-date">
-  	<time datetime="2019-07-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
+        <a href="/2019/06/13/通信/" class="archive-article-date">
+  	<time datetime="2019-06-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><h3 id="博客的初衷："><a href="#博客的初衷：" class="headerlink" title="博客的初衷："></a>博客的初衷：</h3><p>从大学开始，我就有在电脑上敲笔记的习惯，一开始用notepad存在百度云，后来用印象笔记和马克飞象写markdown简化了很多，印象笔记里也存了一堆。但笔记只有自己看的到，我想把 这些东西分享出来，这就是最初的想法。</p>
-<p>鉴于目前的水平处于大量吸收新知识的时候，每当在论坛或者交友网站上看到好的文章总是忍不住放入收藏夹。上次打开收藏夹吓了一跳，已经有一大堆东西了。希望通过博客的形式给自己的收藏夹瘦身。以前看书看文档敲下来的demo都堆到了一起，由于之前没有整理，导致现在自己也分不清啥是啥。希望通过博客的形式，做一些读书笔记，做好分类。</p>
+        <h1 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h1><h3 id="H5-websocket"><a href="#H5-websocket" class="headerlink" title="H5 websocket"></a>H5 websocket</h3><p><a href="https://xin-tan.com/passages/2018-08-19-websocket-group-chat/#_1-%E6%A6%82%E8%BF%B0" target="_blank" rel="noopener">心谭博客</a></p>
+<h3 id="H5-serviceworker"><a href="#H5-serviceworker" class="headerlink" title="H5 serviceworker"></a>H5 serviceworker</h3><p><a href="https://xin-tan.com/passages/2019-04-02-pwa-service-worker/#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D" target="_blank" rel="noopener">xin-tan</a></p>
 
       
 
@@ -480,7 +273,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">初衷</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">通信</a>
         		</li>
       		
 		</ul>
@@ -490,7 +283,308 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/13/随笔/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/06/13/通信/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JS挖坑填坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/11/JS挖坑填坑/">JS挖坑填坑</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/11/JS挖坑填坑/" class="archive-article-date">
+  	<time datetime="2019-06-11T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JS挖坑填坑"><a href="#JS挖坑填坑" class="headerlink" title="JS挖坑填坑"></a>JS挖坑填坑</h1><h5 id="Dom事件流（冒泡）"><a href="#Dom事件流（冒泡）" class="headerlink" title="Dom事件流（冒泡）"></a>Dom事件流（冒泡）</h5><blockquote>
+<p>事件的3个阶段：捕获、目标、冒泡</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>捕获</th>
+<th>事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目标</td>
+<td>事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发</td>
+</tr>
+<tr>
+<td>冒泡</td>
+<td>事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p> 当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是该节点的某个子节点触发事件，由于事件冒泡，该DOM节点事件也会触发，执行了回调函数，这样就违背了最初的本意了。所以需要阻止冒泡。</p>
+</blockquote>
+<p><img src="img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C1562483050109.png" alt="1562483050109"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addEventListener(<span class="string">"eventName"</span>, doSomething, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 第三个Boolean参数为true时, 表示是否在捕获阶段调用事件处理程序（老版dom），新版dom中第三个参数未option，可选很多参数，详见MDN。</p>
+<h6 id="阻止冒泡"><a href="#阻止冒泡" class="headerlink" title="阻止冒泡"></a>阻止冒泡</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">e</span>) </span>&#123; </span><br><span class="line"><span class="comment">//如果提供了事件对象，则这是一个非IE浏览器 </span></span><br><span class="line"><span class="keyword">if</span> ( e &amp;&amp; e.stopPropagation ) </span><br><span class="line">    <span class="comment">//因此它支持W3C的stopPropagation()方法 </span></span><br><span class="line">    e.stopPropagation(); </span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="comment">//否则，我们需要使用IE的方式来取消事件冒泡 </span></span><br><span class="line">    <span class="built_in">window</span>.event.cancelBubble = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vue中有修饰符.stop</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//阻止浏览器的默认行为 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopDefault</span>(<span class="params"> e </span>) </span>&#123; </span><br><span class="line">    <span class="comment">//阻止默认浏览器动作(W3C) </span></span><br><span class="line">    <span class="keyword">if</span> ( e &amp;&amp; e.preventDefault ) </span><br><span class="line">        e.preventDefault(); </span><br><span class="line">    <span class="comment">//IE中阻止函数器默认动作的方式 </span></span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="built_in">window</span>.event.returnValue = <span class="literal">false</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><h6 id="ES5-原型链"><a href="#ES5-原型链" class="headerlink" title="ES5 原型链"></a>ES5 原型链</h6><p><a href="https://segmentfault.com/a/1190000011801127" target="_blank" rel="noopener">_proto与prototype</a></p>
+<p><a href="https://wangdoc.com/javascript/oop/prototype.html" target="_blank" rel="noopener">阮一峰</a></p>
+<p><img src="img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C22.png" alt="proto"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Game</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Game.prototype.color = <span class="string">'white'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> game1 = <span class="keyword">new</span> Game(<span class="string">'fly'</span>);</span><br><span class="line"><span class="keyword">var</span> game2 = <span class="keyword">new</span> Game(<span class="string">'mov'</span>);</span><br><span class="line"></span><br><span class="line">cat1.color <span class="comment">// 'white'</span></span><br><span class="line">cat2.color <span class="comment">// 'white'</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="ES6-class"><a href="#ES6-class" class="headerlink" title="ES6 class"></a>ES6 class</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="图片在手机跨域问题"><a href="#图片在手机跨域问题" class="headerlink" title="图片在手机跨域问题"></a>图片在手机跨域问题</h5><blockquote>
+<p>图片能正常显示，但用在高德的imagelayer接口作为参数传入时不行（用Import引入可以用，但调用接口获取url传入不行）。</p>
+</blockquote>
+<h6 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h6><p>用image对象，转换base64，并且在img对象中设置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">imgObj.crossOrigin=<span class="string">"anonymous"</span>;     <span class="comment">//允许跨域</span></span><br><span class="line">imgObj.src = imgUrl+ <span class="string">'?time='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();  <span class="comment">//为图片地址添加时间戳参数（添加别的参数好像也行）</span></span><br></pre></td></tr></table></figure>
+
+<p>完整代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> b64Img = <span class="keyword">await</span> getBase64Img(<span class="keyword">this</span>.mapUrl);</span><br><span class="line">            <span class="keyword">let</span> imageLayer = <span class="keyword">new</span> AMap.ImageLayer(&#123;</span><br><span class="line">                opacity: <span class="number">1</span>,</span><br><span class="line">                url: b64Img,</span><br><span class="line">                bounds: <span class="keyword">new</span> AMap.Bounds(</span><br><span class="line">                    [that.southWest.split(<span class="string">','</span>)[<span class="number">0</span>], that.southWest.split(<span class="string">','</span>)[<span class="number">1</span>]],</span><br><span class="line">                    [that.northEast.split(<span class="string">','</span>)[<span class="number">0</span>], that.northEast.split(<span class="string">','</span>)[<span class="number">1</span>]]</span><br><span class="line">                ),</span><br><span class="line">                zooms: [<span class="number">10</span>, <span class="number">13</span>] <span class="comment">// 设置可见级别，[最小级别，最大级别]</span></span><br><span class="line">            &#125;);</span><br><span class="line">            map.add(imageLayer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (imgUrl) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> imgObj = <span class="keyword">new</span> Image();</span><br><span class="line">        imgObj.crossOrigin=<span class="string">"anonymous"</span>;</span><br><span class="line">        imgObj.src = imgUrl+ <span class="string">'?time='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();</span><br><span class="line">        imgObj.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">            canvas.width = imgObj.width;</span><br><span class="line">            canvas.height = imgObj.height;</span><br><span class="line">            <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">            ctx.drawImage(imgObj, <span class="number">0</span>, <span class="number">0</span>, imgObj.width, imgObj.height);</span><br><span class="line">            <span class="keyword">const</span> b64Str = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">            resolve(b64Str);</span><br><span class="line">        &#125;;</span><br><span class="line">        imgObj.onerror = <span class="function">(<span class="params">e</span>)=&gt;</span>&#123;</span><br><span class="line">            reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="防止重复点击"><a href="#防止重复点击" class="headerlink" title="防止重复点击"></a>防止重复点击</h5><blockquote>
+<p>起因：项目中，点击事件会触发调用接口。为了防止用户抽风狂点按钮导致的重复事件，定义一个全局变量来控制。</p>
+</blockquote>
+<h6 id="简单方法"><a href="#简单方法" class="headerlink" title="简单方法"></a>简单方法</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>. isCall=<span class="literal">true</span>;</span><br><span class="line"><span class="comment">//click function</span></span><br><span class="line">click()&#123;</span><br><span class="line"><span class="keyword">if</span>(!isCall)&#123;</span><br><span class="line"><span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">this</span>.isCall=<span class="literal">false</span>;</span><br><span class="line"><span class="keyword">this</span>.call();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call function</span></span><br><span class="line">call()&#123;</span><br><span class="line">ajax.send();</span><br><span class="line"><span class="keyword">this</span>.isCall=<span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h6><blockquote>
+<p>防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// func是用户传入需要防抖的函数</span></span><br><span class="line"><span class="comment">// wait是等待时间</span></span><br><span class="line"><span class="keyword">const</span> debounce = <span class="function">(<span class="params">func, wait = <span class="number">50</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 缓存一个定时器id</span></span><br><span class="line">  <span class="keyword">let</span> timer = <span class="number">0</span></span><br><span class="line">  <span class="comment">// 这里返回的函数是每次用户实际调用的防抖函数</span></span><br><span class="line">  <span class="comment">// 如果已经设定过定时器了就清空上一次的定时器</span></span><br><span class="line">  <span class="comment">// 开始一个新的定时器，延迟执行用户传入的方法</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timer) clearTimeout(timer)</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      func.apply(<span class="keyword">this</span>, args)</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不难看出如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个是用来获取当前时间戳的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">now</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125; func        回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;   wait        表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;boolean&#125;  immediate   设置为ture时，是否立即调用函数</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">func, wait = <span class="number">50</span>, immediate = true</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer, context, args</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 延迟执行函数</span></span><br><span class="line">  <span class="keyword">const</span> later = <span class="function"><span class="params">()</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 延迟函数执行完毕，清空缓存的定时器序号</span></span><br><span class="line">    timer = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// 延迟执行的情况下，函数会在延迟函数中执行</span></span><br><span class="line">    <span class="comment">// 使用到之前缓存的参数和上下文</span></span><br><span class="line">    <span class="keyword">if</span> (!immediate) &#123;</span><br><span class="line">      func.apply(context, args)</span><br><span class="line">      context = args = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, wait)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这里返回的函数是每次实际调用的函数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...params</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果没有创建延迟执行函数（later），就创建一个</span></span><br><span class="line">    <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">      timer = later()</span><br><span class="line">      <span class="comment">// 如果是立即执行，调用函数</span></span><br><span class="line">      <span class="comment">// 否则缓存参数和调用上下文</span></span><br><span class="line">      <span class="keyword">if</span> (immediate) &#123;</span><br><span class="line">        func.apply(<span class="keyword">this</span>, params)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        context = <span class="keyword">this</span></span><br><span class="line">        args = params</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="comment">// 如果已有延迟执行函数（later），调用的时候清除原来的并重新设定一个</span></span><br><span class="line">    <span class="comment">// 这样做延迟函数会重新计时</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">      timer = later()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>apply</code>是指向window的。因为 sayHi 函数定义在全局中，所以调用时里面this指向window，<br>所以才需要加上 apply，显示绑定 this 值(input对象)到 sayH 函数里面去。这里的箭头函数依旧是指向 input 对象。</p>
+<h6 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * underscore 节流函数，返回函数连续调用时，func 执行频率限定为 次 / wait</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125;   func      回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;     wait      表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;object&#125;     options   如果想忽略开始函数的的调用，传入&#123;leading: false&#125;。</span></span><br><span class="line"><span class="comment"> *                                如果想忽略结尾函数的调用，传入&#123;trailing: false&#125;</span></span><br><span class="line"><span class="comment"> *                                两者不能共存，否则函数不能执行</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">_.throttle = <span class="function"><span class="keyword">function</span>(<span class="params">func, wait, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context, args, result;</span><br><span class="line">    <span class="keyword">var</span> timeout = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// 之前的时间戳</span></span><br><span class="line">    <span class="keyword">var</span> previous = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 如果 options 没传则设为空对象</span></span><br><span class="line">    <span class="keyword">if</span> (!options) options = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 定时器回调函数</span></span><br><span class="line">    <span class="keyword">var</span> later = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 如果设置了 leading，就将 previous 设为 0</span></span><br><span class="line">      <span class="comment">// 用于下面函数的第一个 if 判断</span></span><br><span class="line">      previous = options.leading === <span class="literal">false</span> ? <span class="number">0</span> : _.now();</span><br><span class="line">      <span class="comment">// 置空一是为了防止内存泄漏，二是为了下面的定时器判断</span></span><br><span class="line">      timeout = <span class="literal">null</span>;</span><br><span class="line">      result = func.apply(context, args);</span><br><span class="line">      <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 获得当前时间戳</span></span><br><span class="line">      <span class="keyword">var</span> now = _.now();</span><br><span class="line">      <span class="comment">// 首次进入前者肯定为 true</span></span><br><span class="line">	  <span class="comment">// 如果需要第一次不执行函数</span></span><br><span class="line">	  <span class="comment">// 就将上次时间戳设为当前的</span></span><br><span class="line">      <span class="comment">// 这样在接下来计算 remaining 的值时会大于0</span></span><br><span class="line">      <span class="keyword">if</span> (!previous &amp;&amp; options.leading === <span class="literal">false</span>) previous = now;</span><br><span class="line">      <span class="comment">// 计算剩余时间</span></span><br><span class="line">      <span class="keyword">var</span> remaining = wait - (now - previous);</span><br><span class="line">      context = <span class="keyword">this</span>;</span><br><span class="line">      args = <span class="built_in">arguments</span>;</span><br><span class="line">      <span class="comment">// 如果当前调用已经大于上次调用时间 + wait</span></span><br><span class="line">      <span class="comment">// 或者用户手动调了时间</span></span><br><span class="line"> 	  <span class="comment">// 如果设置了 trailing，只会进入这个条件</span></span><br><span class="line">	  <span class="comment">// 如果没有设置 leading，那么第一次会进入这个条件</span></span><br><span class="line">	  <span class="comment">// 还有一点，你可能会觉得开启了定时器那么应该不会进入这个 if 条件了</span></span><br><span class="line">	  <span class="comment">// 其实还是会进入的，因为定时器的延时</span></span><br><span class="line">	  <span class="comment">// 并不是准确的时间，很可能你设置了2秒</span></span><br><span class="line">	  <span class="comment">// 但是他需要2.2秒才触发，这时候就会进入这个条件</span></span><br><span class="line">      <span class="keyword">if</span> (remaining &lt;= <span class="number">0</span> || remaining &gt; wait) &#123;</span><br><span class="line">        <span class="comment">// 如果存在定时器就清理掉否则会调用二次回调</span></span><br><span class="line">        <span class="keyword">if</span> (timeout) &#123;</span><br><span class="line">          clearTimeout(timeout);</span><br><span class="line">          timeout = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        previous = now;</span><br><span class="line">        result = func.apply(context, args);</span><br><span class="line">        <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!timeout &amp;&amp; options.trailing !== <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="comment">// 判断是否设置了定时器和 trailing</span></span><br><span class="line">	    <span class="comment">// 没有的话就开启一个定时器</span></span><br><span class="line">        <span class="comment">// 并且不能不能同时设置 leading 和 trailing</span></span><br><span class="line">        timeout = setTimeout(later, remaining);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/11/JS挖坑填坑/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-异步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/19/异步/">异步</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/19/异步/" class="archive-article-date">
+  	<time datetime="2019-05-19T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>.then()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> obj=异步调用接口</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> ihttp.() 调接口返回<span class="built_in">Promise</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">异步</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/19/异步/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-看懂文档" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/13/看懂文档/">看懂文档</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/13/看懂文档/" class="archive-article-date">
+  	<time datetime="2019-05-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="看懂文档"><a href="#看懂文档" class="headerlink" title="看懂文档"></a>看懂文档</h1><blockquote>
+<p>起因：最近看各种文档，被文档的api写法弄得头晕目眩，故整理备忘一下</p>
+<p>中括号表示可选，逗号表示分割。</p>
+</blockquote>
+<h5 id="1-http-createServer-option-requestListener"><a href="#1-http-createServer-option-requestListener" class="headerlink" title="1.http.createServer([option][, requestListener])"></a>1.<code>http.createServer([option][, requestListener])</code></h5><p>两个参数都用中括号包着，代表2个都是可选参数,逗号用来分割参数</p>
+<h5 id="2-request-end-data-encoding-callback"><a href="#2-request-end-data-encoding-callback" class="headerlink" title="2.request.end([data[, encoding]][, callback])"></a>2.<code>request.end([data[, encoding]][, callback])</code></h5><p>最外层2个中括号分成两部分，<code>[data[, encoding]]</code>和<code>[, callback]</code>两部分都是可选参数，其中<code>[data[, encoding]]</code>里面又有一个中括号<code>encoding</code>又是一个可选参数，就是说如果这一块你要传参，可以只传<code>data</code>不传<code>encoding</code>但是要传<code>encoding</code>就必须先传<code>data</code></p>
+<h5 id="3-url-type-body"><a href="#3-url-type-body" class="headerlink" title="3.url[,type[,body]]"></a>3.<code>url[,type[,body]]</code></h5><p>url 必填，type 不写，body 也不能写。</p>
+<h3 id="注释方法"><a href="#注释方法" class="headerlink" title="注释方法"></a>注释方法</h3><h6 id="配置文档（多行注释）"><a href="#配置文档（多行注释）" class="headerlink" title="配置文档（多行注释）"></a>配置文档（多行注释）</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125; func        回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;   wait        表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;boolean&#125;  immediate   设置为ture时，是否立即调用函数</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 延迟执行函数</span></span><br><span class="line"> <span class="keyword">const</span> later = <span class="function"><span class="params">()</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;,<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文档</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/13/看懂文档/">展开全文 >></a>
         </p>
       
 
@@ -527,13 +621,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/13/git常用整理/">git自用整理</a>
+      <a class="article-title" href="/2019/05/04/git常用整理/">git自用整理</a>
     </h1>
   
 
         
-        <a href="/2019/07/13/git常用整理/" class="archive-article-date">
-  	<time datetime="2019-07-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
+        <a href="/2019/05/04/git常用整理/" class="archive-article-date">
+  	<time datetime="2019-05-04T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-04</time>
 </a>
         
       </header>
@@ -845,7 +939,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/13/git常用整理/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/04/git常用整理/">展开全文 >></a>
         </p>
       
 
@@ -875,31 +969,247 @@
 
 
   
-    <article id="post-异步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-linux常用整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/异步/">异步</a>
+      <a class="article-title" href="/2019/04/25/linux常用整理/">linux自用整理</a>
     </h1>
   
 
         
-        <a href="/2019/07/11/异步/" class="archive-article-date">
-  	<time datetime="2019-07-11T12:06:34.983Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
+        <a href="/2019/04/25/linux常用整理/" class="archive-article-date">
+  	<time datetime="2019-04-25T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>.then()</span><br></pre></td></tr></table></figure>
+        <h1 id="linux自用整理"><a href="#linux自用整理" class="headerlink" title="linux自用整理"></a>linux自用整理</h1><h5 id="命令搜索"><a href="#命令搜索" class="headerlink" title="命令搜索"></a>命令搜索</h5><p><a href="http://man.linuxde.net/" target="_blank" rel="noopener">命令搜索</a></p>
+<h5 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h5><blockquote>
+<p>Unix使用斜杆/ 作为路径分隔符，而web应用最新使用在Unix系统上面，所以目前所有的网络地址都采用 斜杆/ 作为分隔符。</p>
+<p>Windows由于使用 斜杆/ 作为DOS命令提示符的参数标志了，为了不混淆，所以采用 反斜杠\ 作为路径分隔符。所以目前windows系统上的文件浏览器都是用 反斜杠\ 作为路径分隔符。随着发展，DOS系统已经被淘汰了，命令提示符也用的很少，斜杆和反斜杠在大多数情况下可以互换，没有影响。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\</code></td>
+<td>在windows中可以用来连接文件路径（常用于本地文件）</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>在linux与unix中用来连接文件路径（目前web应用都用在unix系统上，故网址都用/）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p> 在一般语言编程里，用”\“来表示转义，例如”\n”表示换行。如果我们在网络里使用”\&quot;，就会被解释器解释为转义符，而不是”反斜杠”,如果你非得用”\“在网络里头表示路径，那你得每次都是用”\\“，告诉解释器”&quot;只是单纯的”反斜杠”，而不是转义字符。</p>
+</blockquote>
+<h5 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h5><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>./</code></td>
+<td>当前同级目录</td>
+</tr>
+<tr>
+<td><code>../</code></td>
+<td>上一级目录</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>根目录（盘符）</td>
+</tr>
+</tbody></table>
+<h5 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h5><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>E:</code></td>
+<td>切换盘符</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>进入文件夹</td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>返回上级目录 （.表示当前目录，..表示上级目录）</td>
+</tr>
+<tr>
+<td><code>cd ../..</code></td>
+<td>返回上两级目录</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -m 700 /usr/meng/test    //(m是mode，-m建立目录的同时设置目录的权限。</span><br><span class="line">在目录/usr/meng下建立子目录test，并且只有文件主有读、写和执行权限，其他人无权访问)</span><br><span class="line"></span><br><span class="line">mkdir -p-m 750 bin/os_1      //（-p若所要建立目录的上层目录目前尚未建立，则会一并建立上层目录。</span><br><span class="line">在当前目录中建立bin和bin下的os_1目录，权限设置为文件主可读、写、执行，同组用户可读和执行，其他用户无权访问）</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> obj=异步调用接口</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ls(linux)</code></td>
+<td>显示文件列表</td>
+</tr>
+<tr>
+<td><code>dir(windows)</code></td>
+<td>显示文件列表</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pwd(linux)</code></td>
+<td>显示当前路径</td>
+</tr>
+<tr>
+<td><code>chdir(windows)</code></td>
+<td>显示当前路径</td>
+</tr>
+<tr>
+<td><code>dir  (windows)</code></td>
+<td>滑倒顶部也能显示当前路径</td>
+</tr>
+<tr>
+<td><code>cat（linux）</code></td>
+<td>查看内容，不修改文件</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>vim(windows要先安装，并添加环境变量) 文本编辑</p>
+</blockquote>
+<p> <a href="https://github.com/vim/vim" target="_blank" rel="noopener">vim/github</a></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rm(linux)</code></td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td><code>rm -f</code></td>
+<td>强制删除文件或目录</td>
+</tr>
+<tr>
+<td><code>rm -r</code></td>
+<td>递归处理，将指定目录下的所有文件与子目录一并处理</td>
+</tr>
+</tbody></table>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> ihttp.() 调接口返回<span class="built_in">Promise</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/25/linux常用整理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-es6填坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/21/es6填坑/">es6填坑</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/21/es6填坑/" class="archive-article-date">
+  	<time datetime="2019-04-21T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="es6填坑"><a href="#es6填坑" class="headerlink" title="es6填坑"></a>es6填坑</h1><h3 id="数组的扩展运算符"><a href="#数组的扩展运算符" class="headerlink" title="数组的扩展运算符"></a>数组的扩展运算符</h3><blockquote>
+<p>扩展运算符（spread）是三个点（<code>...</code>）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。该运算符主要用于函数调用。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrAll=[];</span><br><span class="line"><span class="keyword">let</span> arr=[<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>];</span><br><span class="line"><span class="comment">// arrAll.push(...arr);  //输出[true,true,true,true,true,true,true]</span></span><br><span class="line">arrAll.push(arr);        <span class="comment">//输出[[true,true,true,true,true,true,true]]</span></span><br><span class="line"><span class="built_in">console</span>.log(arrAll);</span><br></pre></td></tr></table></figure>
+
+<h3 id="call-aplly-bind-箭头与this"><a href="#call-aplly-bind-箭头与this" class="headerlink" title="call aplly bind 箭头与this"></a>call aplly bind 箭头与this</h3><p><code>call</code> 和 <code>apply</code> 都是为了解决改变 <code>this</code> 的指向。作用都是相同的，只是传参的方式不同。</p>
+<p>除了第一个参数外，<code>call</code> 可以接收一个参数列表，<code>apply</code> 只接受一个参数数组。</p>
+<p><code>bind</code> 和其他两个方法作用也是一致的，只是该方法会返回一个函数。并且我们可以通过 <code>bind</code> 实现柯里化。</p>
+<p>箭头函数体内的<code>this</code>对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValue</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value)</span><br><span class="line">&#125;</span><br><span class="line">getValue.call(a, <span class="string">'yck'</span>, <span class="string">'24'</span>)</span><br><span class="line">getValue.apply(a, [<span class="string">'yck'</span>, <span class="string">'24'</span>])</span><br></pre></td></tr></table></figure>
+
+<h6 id="不适合用箭头的场合"><a href="#不适合用箭头的场合" class="headerlink" title="不适合用箭头的场合"></a>不适合用箭头的场合</h6><p>第一个场合是定义对象的方法，且该方法内部包括<code>this</code>。</p>
+<p>第二个场合是需要动态<code>this</code>的时候，也不应使用箭头函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">'press'</span>);</span><br><span class="line">button.addEventListener(<span class="string">'click'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">this</span>.classList.toggle(<span class="string">'on'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 
       
@@ -914,11 +1224,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">异步</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
@@ -928,166 +1238,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/异步/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-看懂文档" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/看懂文档/">看懂文档</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/11/看懂文档/" class="archive-article-date">
-  	<time datetime="2019-07-11T12:06:34.983Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="看懂文档"><a href="#看懂文档" class="headerlink" title="看懂文档"></a>看懂文档</h1><blockquote>
-<p>起因：最近看各种文档，被文档的api写法弄得头晕目眩，故整理备忘一下</p>
-<p>中括号表示可选，逗号表示分割。</p>
-</blockquote>
-<h5 id="1-http-createServer-option-requestListener"><a href="#1-http-createServer-option-requestListener" class="headerlink" title="1.http.createServer([option][, requestListener])"></a>1.<code>http.createServer([option][, requestListener])</code></h5><p>两个参数都用中括号包着，代表2个都是可选参数,逗号用来分割参数</p>
-<h5 id="2-request-end-data-encoding-callback"><a href="#2-request-end-data-encoding-callback" class="headerlink" title="2.request.end([data[, encoding]][, callback])"></a>2.<code>request.end([data[, encoding]][, callback])</code></h5><p>最外层2个中括号分成两部分，<code>[data[, encoding]]</code>和<code>[, callback]</code>两部分都是可选参数，其中<code>[data[, encoding]]</code>里面又有一个中括号<code>encoding</code>又是一个可选参数，就是说如果这一块你要传参，可以只传<code>data</code>不传<code>encoding</code>但是要传<code>encoding</code>就必须先传<code>data</code></p>
-<h5 id="3-url-type-body"><a href="#3-url-type-body" class="headerlink" title="3.url[,type[,body]]"></a>3.<code>url[,type[,body]]</code></h5><p>url 必填，type 不写，body 也不能写。</p>
-<h3 id="注释方法"><a href="#注释方法" class="headerlink" title="注释方法"></a>注释方法</h3><h6 id="配置文档（多行注释）"><a href="#配置文档（多行注释）" class="headerlink" title="配置文档（多行注释）"></a>配置文档（多行注释）</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125; func        回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;   wait        表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;boolean&#125;  immediate   设置为ture时，是否立即调用函数</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 延迟执行函数</span></span><br><span class="line"> <span class="keyword">const</span> later = <span class="function"><span class="params">()</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;,<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文档</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/看懂文档/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/通信/">通信</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/11/通信/" class="archive-article-date">
-  	<time datetime="2019-07-11T12:06:34.983Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h1><h3 id="H5-websocket"><a href="#H5-websocket" class="headerlink" title="H5 websocket"></a>H5 websocket</h3><p><a href="https://xin-tan.com/passages/2018-08-19-websocket-group-chat/#_1-%E6%A6%82%E8%BF%B0" target="_blank" rel="noopener">心谭博客</a></p>
-<h3 id="H5-serviceworker"><a href="#H5-serviceworker" class="headerlink" title="H5 serviceworker"></a>H5 serviceworker</h3><p><a href="https://xin-tan.com/passages/2019-04-02-pwa-service-worker/#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D" target="_blank" rel="noopener">xin-tan</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">通信</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/通信/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/21/es6填坑/">展开全文 >></a>
         </p>
       
 
@@ -1124,13 +1275,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/浏览器考点/">浏览器考点</a>
+      <a class="article-title" href="/2019/04/13/浏览器考点/">浏览器考点</a>
     </h1>
   
 
         
-        <a href="/2019/07/11/浏览器考点/" class="archive-article-date">
-  	<time datetime="2019-07-11T12:06:34.983Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
+        <a href="/2019/04/13/浏览器考点/" class="archive-article-date">
+  	<time datetime="2019-04-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
 </a>
         
       </header>
@@ -1275,7 +1426,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/浏览器考点/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/13/浏览器考点/">展开全文 >></a>
         </p>
       
 
@@ -1305,179 +1456,79 @@
 
 
   
-    <article id="post-es6填坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-NPM自用整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/es6填坑/">es6填坑</a>
+      <a class="article-title" href="/2019/03/22/NPM自用整理/">NPM自用整理</a>
     </h1>
   
 
         
-        <a href="/2019/07/11/es6填坑/" class="archive-article-date">
-  	<time datetime="2019-07-11T12:06:34.952Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
+        <a href="/2019/03/22/NPM自用整理/" class="archive-article-date">
+  	<time datetime="2019-03-22T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="es6填坑"><a href="#es6填坑" class="headerlink" title="es6填坑"></a>es6填坑</h1><h3 id="数组的扩展运算符"><a href="#数组的扩展运算符" class="headerlink" title="数组的扩展运算符"></a>数组的扩展运算符</h3><blockquote>
-<p>扩展运算符（spread）是三个点（<code>...</code>）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。该运算符主要用于函数调用。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrAll=[];</span><br><span class="line"><span class="keyword">let</span> arr=[<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>,<span class="literal">true</span>];</span><br><span class="line"><span class="comment">// arrAll.push(...arr);  //输出[true,true,true,true,true,true,true]</span></span><br><span class="line">arrAll.push(arr);        <span class="comment">//输出[[true,true,true,true,true,true,true]]</span></span><br><span class="line"><span class="built_in">console</span>.log(arrAll);</span><br></pre></td></tr></table></figure>
-
-<h3 id="call-aplly-bind-箭头与this"><a href="#call-aplly-bind-箭头与this" class="headerlink" title="call aplly bind 箭头与this"></a>call aplly bind 箭头与this</h3><p><code>call</code> 和 <code>apply</code> 都是为了解决改变 <code>this</code> 的指向。作用都是相同的，只是传参的方式不同。</p>
-<p>除了第一个参数外，<code>call</code> 可以接收一个参数列表，<code>apply</code> 只接受一个参数数组。</p>
-<p><code>bind</code> 和其他两个方法作用也是一致的，只是该方法会返回一个函数。并且我们可以通过 <code>bind</code> 实现柯里化。</p>
-<p>箭头函数体内的<code>this</code>对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValue</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value)</span><br><span class="line">&#125;</span><br><span class="line">getValue.call(a, <span class="string">'yck'</span>, <span class="string">'24'</span>)</span><br><span class="line">getValue.apply(a, [<span class="string">'yck'</span>, <span class="string">'24'</span>])</span><br></pre></td></tr></table></figure>
-
-<h6 id="不适合用箭头的场合"><a href="#不适合用箭头的场合" class="headerlink" title="不适合用箭头的场合"></a>不适合用箭头的场合</h6><p>第一个场合是定义对象的方法，且该方法内部包括<code>this</code>。</p>
-<p>第二个场合是需要动态<code>this</code>的时候，也不应使用箭头函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">'press'</span>);</span><br><span class="line">button.addEventListener(<span class="string">'click'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">this</span>.classList.toggle(<span class="string">'on'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/es6填坑/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS挖坑填坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/08/JS挖坑填坑/">JS挖坑填坑</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/08/JS挖坑填坑/" class="archive-article-date">
-  	<time datetime="2019-07-07T17:32:01.318Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="JS挖坑填坑"><a href="#JS挖坑填坑" class="headerlink" title="JS挖坑填坑"></a>JS挖坑填坑</h1><h5 id="Dom事件流（冒泡）"><a href="#Dom事件流（冒泡）" class="headerlink" title="Dom事件流（冒泡）"></a>Dom事件流（冒泡）</h5><blockquote>
-<p>事件的3个阶段：捕获、目标、冒泡</p>
-</blockquote>
+        <h1 id="NPM自用整理"><a href="#NPM自用整理" class="headerlink" title="NPM自用整理"></a>NPM自用整理</h1><p><a href="https://www.npmjs.cn/" target="_blank" rel="noopener">npm中文文档</a></p>
 <table>
 <thead>
 <tr>
-<th>捕获</th>
-<th>事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点</th>
+<th>命令</th>
+<th>作用</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>目标</td>
-<td>事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发</td>
+<td><code>npm init</code></td>
+<td>初始化 生成package.json</td>
 </tr>
 <tr>
-<td>冒泡</td>
-<td>事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点</td>
+<td><code>ctrl +c</code></td>
+<td>撤销</td>
+</tr>
+<tr>
+<td><code>npm i</code></td>
+<td>下载依赖</td>
+</tr>
+<tr>
+<td><code>npm i --save</code></td>
+<td>下载依赖并存到生产依赖中</td>
+</tr>
+<tr>
+<td><code>npm i --save dev</code></td>
+<td>下载依赖并存到开发依赖中</td>
+</tr>
+<tr>
+<td><code>npm uninstall -g</code></td>
+<td>全局删除包</td>
+</tr>
+<tr>
+<td><code>npm uninstall</code></td>
+<td>删除包</td>
+</tr>
+<tr>
+<td><code>npm uninstall --save</code></td>
+<td>生产依赖卸载包</td>
+</tr>
+<tr>
+<td><code>npm uninstall --save dev</code></td>
+<td>开发依赖卸载包</td>
+</tr>
+<tr>
+<td><code>npm undate</code></td>
+<td>更新包</td>
+</tr>
+<tr>
+<td><code>npm outdated</code></td>
+<td>是否有包过期</td>
 </tr>
 </tbody></table>
-<blockquote>
-<p> 当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是该节点的某个子节点触发事件，由于事件冒泡，该DOM节点事件也会触发，执行了回调函数，这样就违背了最初的本意了。所以需要阻止冒泡。</p>
-</blockquote>
-<p><img src="img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C1562483050109.png" alt="1562483050109"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addEventListener(<span class="string">"eventName"</span>, doSomething, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
-
-<p> 第三个Boolean参数为true时, 表示是否在捕获阶段调用事件处理程序（老版dom），新版dom中第三个参数未option，可选很多参数，详见MDN。</p>
-<h6 id="阻止冒泡"><a href="#阻止冒泡" class="headerlink" title="阻止冒泡"></a>阻止冒泡</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">e</span>) </span>&#123; </span><br><span class="line"><span class="comment">//如果提供了事件对象，则这是一个非IE浏览器 </span></span><br><span class="line"><span class="keyword">if</span> ( e &amp;&amp; e.stopPropagation ) </span><br><span class="line">    <span class="comment">//因此它支持W3C的stopPropagation()方法 </span></span><br><span class="line">    e.stopPropagation(); </span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="comment">//否则，我们需要使用IE的方式来取消事件冒泡 </span></span><br><span class="line">    <span class="built_in">window</span>.event.cancelBubble = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vue中有修饰符.stop</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//阻止浏览器的默认行为 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopDefault</span>(<span class="params"> e </span>) </span>&#123; </span><br><span class="line">    <span class="comment">//阻止默认浏览器动作(W3C) </span></span><br><span class="line">    <span class="keyword">if</span> ( e &amp;&amp; e.preventDefault ) </span><br><span class="line">        e.preventDefault(); </span><br><span class="line">    <span class="comment">//IE中阻止函数器默认动作的方式 </span></span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="built_in">window</span>.event.returnValue = <span class="literal">false</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><h6 id="ES5-原型链"><a href="#ES5-原型链" class="headerlink" title="ES5 原型链"></a>ES5 原型链</h6><p><a href="https://segmentfault.com/a/1190000011801127" target="_blank" rel="noopener">_proto与prototype</a></p>
-<p><a href="https://wangdoc.com/javascript/oop/prototype.html" target="_blank" rel="noopener">阮一峰</a></p>
-<p><img src="img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C22.png" alt="proto"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Game</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Game.prototype.color = <span class="string">'white'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> game1 = <span class="keyword">new</span> Game(<span class="string">'fly'</span>);</span><br><span class="line"><span class="keyword">var</span> game2 = <span class="keyword">new</span> Game(<span class="string">'mov'</span>);</span><br><span class="line"></span><br><span class="line">cat1.color <span class="comment">// 'white'</span></span><br><span class="line">cat2.color <span class="comment">// 'white'</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="ES6-class"><a href="#ES6-class" class="headerlink" title="ES6 class"></a>ES6 class</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="图片在手机跨域问题"><a href="#图片在手机跨域问题" class="headerlink" title="图片在手机跨域问题"></a>图片在手机跨域问题</h5><blockquote>
-<p>图片能正常显示，但用在高德的imagelayer接口作为参数传入时不行（用Import引入可以用，但调用接口获取url传入不行）。</p>
-</blockquote>
-<h6 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h6><p>用image对象，转换base64，并且在img对象中设置</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">imgObj.crossOrigin=<span class="string">"anonymous"</span>;     <span class="comment">//允许跨域</span></span><br><span class="line">imgObj.src = imgUrl+ <span class="string">'?time='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();  <span class="comment">//为图片地址添加时间戳参数（添加别的参数好像也行）</span></span><br></pre></td></tr></table></figure>
-
-<p>完整代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> b64Img = <span class="keyword">await</span> getBase64Img(<span class="keyword">this</span>.mapUrl);</span><br><span class="line">            <span class="keyword">let</span> imageLayer = <span class="keyword">new</span> AMap.ImageLayer(&#123;</span><br><span class="line">                opacity: <span class="number">1</span>,</span><br><span class="line">                url: b64Img,</span><br><span class="line">                bounds: <span class="keyword">new</span> AMap.Bounds(</span><br><span class="line">                    [that.southWest.split(<span class="string">','</span>)[<span class="number">0</span>], that.southWest.split(<span class="string">','</span>)[<span class="number">1</span>]],</span><br><span class="line">                    [that.northEast.split(<span class="string">','</span>)[<span class="number">0</span>], that.northEast.split(<span class="string">','</span>)[<span class="number">1</span>]]</span><br><span class="line">                ),</span><br><span class="line">                zooms: [<span class="number">10</span>, <span class="number">13</span>] <span class="comment">// 设置可见级别，[最小级别，最大级别]</span></span><br><span class="line">            &#125;);</span><br><span class="line">            map.add(imageLayer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (imgUrl) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> imgObj = <span class="keyword">new</span> Image();</span><br><span class="line">        imgObj.crossOrigin=<span class="string">"anonymous"</span>;</span><br><span class="line">        imgObj.src = imgUrl+ <span class="string">'?time='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();</span><br><span class="line">        imgObj.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">            canvas.width = imgObj.width;</span><br><span class="line">            canvas.height = imgObj.height;</span><br><span class="line">            <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">            ctx.drawImage(imgObj, <span class="number">0</span>, <span class="number">0</span>, imgObj.width, imgObj.height);</span><br><span class="line">            <span class="keyword">const</span> b64Str = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">            resolve(b64Str);</span><br><span class="line">        &#125;;</span><br><span class="line">        imgObj.onerror = <span class="function">(<span class="params">e</span>)=&gt;</span>&#123;</span><br><span class="line">            reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="防止重复点击"><a href="#防止重复点击" class="headerlink" title="防止重复点击"></a>防止重复点击</h5><blockquote>
-<p>起因：项目中，点击事件会触发调用接口。为了防止用户抽风狂点按钮导致的重复事件，定义一个全局变量来控制。</p>
-</blockquote>
-<h6 id="简单方法"><a href="#简单方法" class="headerlink" title="简单方法"></a>简单方法</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>. isCall=<span class="literal">true</span>;</span><br><span class="line"><span class="comment">//click function</span></span><br><span class="line">click()&#123;</span><br><span class="line"><span class="keyword">if</span>(!isCall)&#123;</span><br><span class="line"><span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">this</span>.isCall=<span class="literal">false</span>;</span><br><span class="line"><span class="keyword">this</span>.call();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call function</span></span><br><span class="line">call()&#123;</span><br><span class="line">ajax.send();</span><br><span class="line"><span class="keyword">this</span>.isCall=<span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h6><blockquote>
-<p>防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// func是用户传入需要防抖的函数</span></span><br><span class="line"><span class="comment">// wait是等待时间</span></span><br><span class="line"><span class="keyword">const</span> debounce = <span class="function">(<span class="params">func, wait = <span class="number">50</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 缓存一个定时器id</span></span><br><span class="line">  <span class="keyword">let</span> timer = <span class="number">0</span></span><br><span class="line">  <span class="comment">// 这里返回的函数是每次用户实际调用的防抖函数</span></span><br><span class="line">  <span class="comment">// 如果已经设定过定时器了就清空上一次的定时器</span></span><br><span class="line">  <span class="comment">// 开始一个新的定时器，延迟执行用户传入的方法</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timer) clearTimeout(timer)</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      func.apply(<span class="keyword">this</span>, args)</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不难看出如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个是用来获取当前时间戳的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">now</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125; func        回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;   wait        表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;boolean&#125;  immediate   设置为ture时，是否立即调用函数</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">func, wait = <span class="number">50</span>, immediate = true</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer, context, args</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 延迟执行函数</span></span><br><span class="line">  <span class="keyword">const</span> later = <span class="function"><span class="params">()</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 延迟函数执行完毕，清空缓存的定时器序号</span></span><br><span class="line">    timer = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// 延迟执行的情况下，函数会在延迟函数中执行</span></span><br><span class="line">    <span class="comment">// 使用到之前缓存的参数和上下文</span></span><br><span class="line">    <span class="keyword">if</span> (!immediate) &#123;</span><br><span class="line">      func.apply(context, args)</span><br><span class="line">      context = args = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, wait)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这里返回的函数是每次实际调用的函数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...params</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果没有创建延迟执行函数（later），就创建一个</span></span><br><span class="line">    <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">      timer = later()</span><br><span class="line">      <span class="comment">// 如果是立即执行，调用函数</span></span><br><span class="line">      <span class="comment">// 否则缓存参数和调用上下文</span></span><br><span class="line">      <span class="keyword">if</span> (immediate) &#123;</span><br><span class="line">        func.apply(<span class="keyword">this</span>, params)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        context = <span class="keyword">this</span></span><br><span class="line">        args = params</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="comment">// 如果已有延迟执行函数（later），调用的时候清除原来的并重新设定一个</span></span><br><span class="line">    <span class="comment">// 这样做延迟函数会重新计时</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">      timer = later()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里的<code>apply</code>是指向window的。因为 sayHi 函数定义在全局中，所以调用时里面this指向window，<br>所以才需要加上 apply，显示绑定 this 值(input对象)到 sayH 函数里面去。这里的箭头函数依旧是指向 input 对象。</p>
-<h6 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * underscore 节流函数，返回函数连续调用时，func 执行频率限定为 次 / wait</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125;   func      回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;     wait      表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;object&#125;     options   如果想忽略开始函数的的调用，传入&#123;leading: false&#125;。</span></span><br><span class="line"><span class="comment"> *                                如果想忽略结尾函数的调用，传入&#123;trailing: false&#125;</span></span><br><span class="line"><span class="comment"> *                                两者不能共存，否则函数不能执行</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">_.throttle = <span class="function"><span class="keyword">function</span>(<span class="params">func, wait, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context, args, result;</span><br><span class="line">    <span class="keyword">var</span> timeout = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// 之前的时间戳</span></span><br><span class="line">    <span class="keyword">var</span> previous = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 如果 options 没传则设为空对象</span></span><br><span class="line">    <span class="keyword">if</span> (!options) options = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 定时器回调函数</span></span><br><span class="line">    <span class="keyword">var</span> later = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 如果设置了 leading，就将 previous 设为 0</span></span><br><span class="line">      <span class="comment">// 用于下面函数的第一个 if 判断</span></span><br><span class="line">      previous = options.leading === <span class="literal">false</span> ? <span class="number">0</span> : _.now();</span><br><span class="line">      <span class="comment">// 置空一是为了防止内存泄漏，二是为了下面的定时器判断</span></span><br><span class="line">      timeout = <span class="literal">null</span>;</span><br><span class="line">      result = func.apply(context, args);</span><br><span class="line">      <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 获得当前时间戳</span></span><br><span class="line">      <span class="keyword">var</span> now = _.now();</span><br><span class="line">      <span class="comment">// 首次进入前者肯定为 true</span></span><br><span class="line">	  <span class="comment">// 如果需要第一次不执行函数</span></span><br><span class="line">	  <span class="comment">// 就将上次时间戳设为当前的</span></span><br><span class="line">      <span class="comment">// 这样在接下来计算 remaining 的值时会大于0</span></span><br><span class="line">      <span class="keyword">if</span> (!previous &amp;&amp; options.leading === <span class="literal">false</span>) previous = now;</span><br><span class="line">      <span class="comment">// 计算剩余时间</span></span><br><span class="line">      <span class="keyword">var</span> remaining = wait - (now - previous);</span><br><span class="line">      context = <span class="keyword">this</span>;</span><br><span class="line">      args = <span class="built_in">arguments</span>;</span><br><span class="line">      <span class="comment">// 如果当前调用已经大于上次调用时间 + wait</span></span><br><span class="line">      <span class="comment">// 或者用户手动调了时间</span></span><br><span class="line"> 	  <span class="comment">// 如果设置了 trailing，只会进入这个条件</span></span><br><span class="line">	  <span class="comment">// 如果没有设置 leading，那么第一次会进入这个条件</span></span><br><span class="line">	  <span class="comment">// 还有一点，你可能会觉得开启了定时器那么应该不会进入这个 if 条件了</span></span><br><span class="line">	  <span class="comment">// 其实还是会进入的，因为定时器的延时</span></span><br><span class="line">	  <span class="comment">// 并不是准确的时间，很可能你设置了2秒</span></span><br><span class="line">	  <span class="comment">// 但是他需要2.2秒才触发，这时候就会进入这个条件</span></span><br><span class="line">      <span class="keyword">if</span> (remaining &lt;= <span class="number">0</span> || remaining &gt; wait) &#123;</span><br><span class="line">        <span class="comment">// 如果存在定时器就清理掉否则会调用二次回调</span></span><br><span class="line">        <span class="keyword">if</span> (timeout) &#123;</span><br><span class="line">          clearTimeout(timeout);</span><br><span class="line">          timeout = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        previous = now;</span><br><span class="line">        result = func.apply(context, args);</span><br><span class="line">        <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!timeout &amp;&amp; options.trailing !== <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="comment">// 判断是否设置了定时器和 trailing</span></span><br><span class="line">	    <span class="comment">// 没有的话就开启一个定时器</span></span><br><span class="line">        <span class="comment">// 并且不能不能同时设置 leading 和 trailing</span></span><br><span class="line">        timeout = setTimeout(later, remaining);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-
 
       
 
@@ -1491,7 +1542,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">npm</a>
         		</li>
       		
 		</ul>
@@ -1501,7 +1552,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/08/JS挖坑填坑/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/22/NPM自用整理/">展开全文 >></a>
         </p>
       
 
@@ -1620,15 +1671,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1640,6 +1691,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文档</a>
               </li>
              
@@ -1648,11 +1703,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1661,10 +1712,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
               </li>
             
             <div class="clearfix"></div>

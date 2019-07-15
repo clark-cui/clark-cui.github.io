@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>JS挖坑填坑 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="笔记型博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="JS挖坑填坑Dom事件流（冒泡） 事件的3个阶段：捕获、目标、冒泡     捕获 事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点    目标 事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发   冒泡 事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点     当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS挖坑填坑">
+<meta property="og:url" content="http://yoursite.com/2019/06/11/JS挖坑填坑/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="笔记型博客">
+<meta property="og:description" content="JS挖坑填坑Dom事件流（冒泡） 事件的3个阶段：捕获、目标、冒泡     捕获 事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点    目标 事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发   冒泡 事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点     当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/06/11/JS挖坑填坑/img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C1562483050109.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/11/JS挖坑填坑/img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C22.png">
+<meta property="og:updated_time" content="2019-07-15T14:06:45.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="笔记型博客">
+<meta name="twitter:title" content="JS挖坑填坑">
+<meta name="twitter:description" content="JS挖坑填坑Dom事件流（冒泡） 事件的3个阶段：捕获、目标、冒泡     捕获 事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点    目标 事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发   冒泡 事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点     当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/11/JS挖坑填坑/img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C1562483050109.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -137,32 +142,121 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-初衷" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-JS挖坑填坑" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/初衷/">博客的初衷</a>
+    <h1 class="article-title" itemprop="name">
+      JS挖坑填坑
     </h1>
   
 
         
-        <a href="/2019/03/13/初衷/" class="archive-article-date">
-  	<time datetime="2019-03-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+        <a href="/2019/06/11/JS挖坑填坑/" class="archive-article-date">
+  	<time datetime="2019-06-11T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>从大学开始，我就有在电脑上敲笔记的习惯，一开始用notepad存在百度云，后来用印象笔记和马克飞象写markdown简化了很多，印象笔记里也存了一堆。但笔记只有自己看的到，我想把 这些东西分享出来，这就是最初的想法。<br>鉴于目前的水平处于大量吸收新知识的时候，每当在论坛或者交友网站上看到好的文章总是忍不住放入收藏夹。上次打开收藏夹吓了一跳，已经有一大堆东西了。希望通过博客的形式给自己的收藏夹瘦身。以前看书看文档敲下来的demo都堆到了一起，由于之前没有整理，导致现在自己也分不清啥是啥。希望通过博客的形式，做一些读书笔记，做好分类。</p>
+        <h1 id="JS挖坑填坑"><a href="#JS挖坑填坑" class="headerlink" title="JS挖坑填坑"></a>JS挖坑填坑</h1><h5 id="Dom事件流（冒泡）"><a href="#Dom事件流（冒泡）" class="headerlink" title="Dom事件流（冒泡）"></a>Dom事件流（冒泡）</h5><blockquote>
+<p>事件的3个阶段：捕获、目标、冒泡</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>捕获</th>
+<th>事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目标</td>
+<td>事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发</td>
+</tr>
+<tr>
+<td>冒泡</td>
+<td>事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p> 当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是该节点的某个子节点触发事件，由于事件冒泡，该DOM节点事件也会触发，执行了回调函数，这样就违背了最初的本意了。所以需要阻止冒泡。</p>
+</blockquote>
+<p><img src="img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C1562483050109.png" alt="1562483050109"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addEventListener(<span class="string">"eventName"</span>, doSomething, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 第三个Boolean参数为true时, 表示是否在捕获阶段调用事件处理程序（老版dom），新版dom中第三个参数未option，可选很多参数，详见MDN。</p>
+<h6 id="阻止冒泡"><a href="#阻止冒泡" class="headerlink" title="阻止冒泡"></a>阻止冒泡</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">e</span>) </span>&#123; </span><br><span class="line"><span class="comment">//如果提供了事件对象，则这是一个非IE浏览器 </span></span><br><span class="line"><span class="keyword">if</span> ( e &amp;&amp; e.stopPropagation ) </span><br><span class="line">    <span class="comment">//因此它支持W3C的stopPropagation()方法 </span></span><br><span class="line">    e.stopPropagation(); </span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="comment">//否则，我们需要使用IE的方式来取消事件冒泡 </span></span><br><span class="line">    <span class="built_in">window</span>.event.cancelBubble = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vue中有修饰符.stop</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//阻止浏览器的默认行为 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopDefault</span>(<span class="params"> e </span>) </span>&#123; </span><br><span class="line">    <span class="comment">//阻止默认浏览器动作(W3C) </span></span><br><span class="line">    <span class="keyword">if</span> ( e &amp;&amp; e.preventDefault ) </span><br><span class="line">        e.preventDefault(); </span><br><span class="line">    <span class="comment">//IE中阻止函数器默认动作的方式 </span></span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="built_in">window</span>.event.returnValue = <span class="literal">false</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><h6 id="ES5-原型链"><a href="#ES5-原型链" class="headerlink" title="ES5 原型链"></a>ES5 原型链</h6><p><a href="https://segmentfault.com/a/1190000011801127" target="_blank" rel="noopener">_proto与prototype</a></p>
+<p><a href="https://wangdoc.com/javascript/oop/prototype.html" target="_blank" rel="noopener">阮一峰</a></p>
+<p><img src="img%5CJS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C22.png" alt="proto"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Game</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Game.prototype.color = <span class="string">'white'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> game1 = <span class="keyword">new</span> Game(<span class="string">'fly'</span>);</span><br><span class="line"><span class="keyword">var</span> game2 = <span class="keyword">new</span> Game(<span class="string">'mov'</span>);</span><br><span class="line"></span><br><span class="line">cat1.color <span class="comment">// 'white'</span></span><br><span class="line">cat2.color <span class="comment">// 'white'</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="ES6-class"><a href="#ES6-class" class="headerlink" title="ES6 class"></a>ES6 class</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="图片在手机跨域问题"><a href="#图片在手机跨域问题" class="headerlink" title="图片在手机跨域问题"></a>图片在手机跨域问题</h5><blockquote>
+<p>图片能正常显示，但用在高德的imagelayer接口作为参数传入时不行（用Import引入可以用，但调用接口获取url传入不行）。</p>
+</blockquote>
+<h6 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h6><p>用image对象，转换base64，并且在img对象中设置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">imgObj.crossOrigin=<span class="string">"anonymous"</span>;     <span class="comment">//允许跨域</span></span><br><span class="line">imgObj.src = imgUrl+ <span class="string">'?time='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();  <span class="comment">//为图片地址添加时间戳参数（添加别的参数好像也行）</span></span><br></pre></td></tr></table></figure>
+
+<p>完整代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> b64Img = <span class="keyword">await</span> getBase64Img(<span class="keyword">this</span>.mapUrl);</span><br><span class="line">            <span class="keyword">let</span> imageLayer = <span class="keyword">new</span> AMap.ImageLayer(&#123;</span><br><span class="line">                opacity: <span class="number">1</span>,</span><br><span class="line">                url: b64Img,</span><br><span class="line">                bounds: <span class="keyword">new</span> AMap.Bounds(</span><br><span class="line">                    [that.southWest.split(<span class="string">','</span>)[<span class="number">0</span>], that.southWest.split(<span class="string">','</span>)[<span class="number">1</span>]],</span><br><span class="line">                    [that.northEast.split(<span class="string">','</span>)[<span class="number">0</span>], that.northEast.split(<span class="string">','</span>)[<span class="number">1</span>]]</span><br><span class="line">                ),</span><br><span class="line">                zooms: [<span class="number">10</span>, <span class="number">13</span>] <span class="comment">// 设置可见级别，[最小级别，最大级别]</span></span><br><span class="line">            &#125;);</span><br><span class="line">            map.add(imageLayer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (imgUrl) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> imgObj = <span class="keyword">new</span> Image();</span><br><span class="line">        imgObj.crossOrigin=<span class="string">"anonymous"</span>;</span><br><span class="line">        imgObj.src = imgUrl+ <span class="string">'?time='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();</span><br><span class="line">        imgObj.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">            canvas.width = imgObj.width;</span><br><span class="line">            canvas.height = imgObj.height;</span><br><span class="line">            <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">            ctx.drawImage(imgObj, <span class="number">0</span>, <span class="number">0</span>, imgObj.width, imgObj.height);</span><br><span class="line">            <span class="keyword">const</span> b64Str = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">            resolve(b64Str);</span><br><span class="line">        &#125;;</span><br><span class="line">        imgObj.onerror = <span class="function">(<span class="params">e</span>)=&gt;</span>&#123;</span><br><span class="line">            reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="防止重复点击"><a href="#防止重复点击" class="headerlink" title="防止重复点击"></a>防止重复点击</h5><blockquote>
+<p>起因：项目中，点击事件会触发调用接口。为了防止用户抽风狂点按钮导致的重复事件，定义一个全局变量来控制。</p>
+</blockquote>
+<h6 id="简单方法"><a href="#简单方法" class="headerlink" title="简单方法"></a>简单方法</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>. isCall=<span class="literal">true</span>;</span><br><span class="line"><span class="comment">//click function</span></span><br><span class="line">click()&#123;</span><br><span class="line"><span class="keyword">if</span>(!isCall)&#123;</span><br><span class="line"><span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">this</span>.isCall=<span class="literal">false</span>;</span><br><span class="line"><span class="keyword">this</span>.call();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call function</span></span><br><span class="line">call()&#123;</span><br><span class="line">ajax.send();</span><br><span class="line"><span class="keyword">this</span>.isCall=<span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h6><blockquote>
+<p>防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// func是用户传入需要防抖的函数</span></span><br><span class="line"><span class="comment">// wait是等待时间</span></span><br><span class="line"><span class="keyword">const</span> debounce = <span class="function">(<span class="params">func, wait = <span class="number">50</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 缓存一个定时器id</span></span><br><span class="line">  <span class="keyword">let</span> timer = <span class="number">0</span></span><br><span class="line">  <span class="comment">// 这里返回的函数是每次用户实际调用的防抖函数</span></span><br><span class="line">  <span class="comment">// 如果已经设定过定时器了就清空上一次的定时器</span></span><br><span class="line">  <span class="comment">// 开始一个新的定时器，延迟执行用户传入的方法</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timer) clearTimeout(timer)</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      func.apply(<span class="keyword">this</span>, args)</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不难看出如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个是用来获取当前时间戳的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">now</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125; func        回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;   wait        表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;boolean&#125;  immediate   设置为ture时，是否立即调用函数</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">func, wait = <span class="number">50</span>, immediate = true</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer, context, args</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 延迟执行函数</span></span><br><span class="line">  <span class="keyword">const</span> later = <span class="function"><span class="params">()</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 延迟函数执行完毕，清空缓存的定时器序号</span></span><br><span class="line">    timer = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// 延迟执行的情况下，函数会在延迟函数中执行</span></span><br><span class="line">    <span class="comment">// 使用到之前缓存的参数和上下文</span></span><br><span class="line">    <span class="keyword">if</span> (!immediate) &#123;</span><br><span class="line">      func.apply(context, args)</span><br><span class="line">      context = args = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, wait)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这里返回的函数是每次实际调用的函数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...params</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果没有创建延迟执行函数（later），就创建一个</span></span><br><span class="line">    <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">      timer = later()</span><br><span class="line">      <span class="comment">// 如果是立即执行，调用函数</span></span><br><span class="line">      <span class="comment">// 否则缓存参数和调用上下文</span></span><br><span class="line">      <span class="keyword">if</span> (immediate) &#123;</span><br><span class="line">        func.apply(<span class="keyword">this</span>, params)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        context = <span class="keyword">this</span></span><br><span class="line">        args = params</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="comment">// 如果已有延迟执行函数（later），调用的时候清除原来的并重新设定一个</span></span><br><span class="line">    <span class="comment">// 这样做延迟函数会重新计时</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">      timer = later()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>apply</code>是指向window的。因为 sayHi 函数定义在全局中，所以调用时里面this指向window，<br>所以才需要加上 apply，显示绑定 this 值(input对象)到 sayH 函数里面去。这里的箭头函数依旧是指向 input 对象。</p>
+<h6 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * underscore 节流函数，返回函数连续调用时，func 执行频率限定为 次 / wait</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125;   func      回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;     wait      表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;object&#125;     options   如果想忽略开始函数的的调用，传入&#123;leading: false&#125;。</span></span><br><span class="line"><span class="comment"> *                                如果想忽略结尾函数的调用，传入&#123;trailing: false&#125;</span></span><br><span class="line"><span class="comment"> *                                两者不能共存，否则函数不能执行</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">_.throttle = <span class="function"><span class="keyword">function</span>(<span class="params">func, wait, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context, args, result;</span><br><span class="line">    <span class="keyword">var</span> timeout = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// 之前的时间戳</span></span><br><span class="line">    <span class="keyword">var</span> previous = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 如果 options 没传则设为空对象</span></span><br><span class="line">    <span class="keyword">if</span> (!options) options = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 定时器回调函数</span></span><br><span class="line">    <span class="keyword">var</span> later = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 如果设置了 leading，就将 previous 设为 0</span></span><br><span class="line">      <span class="comment">// 用于下面函数的第一个 if 判断</span></span><br><span class="line">      previous = options.leading === <span class="literal">false</span> ? <span class="number">0</span> : _.now();</span><br><span class="line">      <span class="comment">// 置空一是为了防止内存泄漏，二是为了下面的定时器判断</span></span><br><span class="line">      timeout = <span class="literal">null</span>;</span><br><span class="line">      result = func.apply(context, args);</span><br><span class="line">      <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 获得当前时间戳</span></span><br><span class="line">      <span class="keyword">var</span> now = _.now();</span><br><span class="line">      <span class="comment">// 首次进入前者肯定为 true</span></span><br><span class="line">	  <span class="comment">// 如果需要第一次不执行函数</span></span><br><span class="line">	  <span class="comment">// 就将上次时间戳设为当前的</span></span><br><span class="line">      <span class="comment">// 这样在接下来计算 remaining 的值时会大于0</span></span><br><span class="line">      <span class="keyword">if</span> (!previous &amp;&amp; options.leading === <span class="literal">false</span>) previous = now;</span><br><span class="line">      <span class="comment">// 计算剩余时间</span></span><br><span class="line">      <span class="keyword">var</span> remaining = wait - (now - previous);</span><br><span class="line">      context = <span class="keyword">this</span>;</span><br><span class="line">      args = <span class="built_in">arguments</span>;</span><br><span class="line">      <span class="comment">// 如果当前调用已经大于上次调用时间 + wait</span></span><br><span class="line">      <span class="comment">// 或者用户手动调了时间</span></span><br><span class="line"> 	  <span class="comment">// 如果设置了 trailing，只会进入这个条件</span></span><br><span class="line">	  <span class="comment">// 如果没有设置 leading，那么第一次会进入这个条件</span></span><br><span class="line">	  <span class="comment">// 还有一点，你可能会觉得开启了定时器那么应该不会进入这个 if 条件了</span></span><br><span class="line">	  <span class="comment">// 其实还是会进入的，因为定时器的延时</span></span><br><span class="line">	  <span class="comment">// 并不是准确的时间，很可能你设置了2秒</span></span><br><span class="line">	  <span class="comment">// 但是他需要2.2秒才触发，这时候就会进入这个条件</span></span><br><span class="line">      <span class="keyword">if</span> (remaining &lt;= <span class="number">0</span> || remaining &gt; wait) &#123;</span><br><span class="line">        <span class="comment">// 如果存在定时器就清理掉否则会调用二次回调</span></span><br><span class="line">        <span class="keyword">if</span> (timeout) &#123;</span><br><span class="line">          clearTimeout(timeout);</span><br><span class="line">          timeout = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        previous = now;</span><br><span class="line">        result = func.apply(context, args);</span><br><span class="line">        <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!timeout &amp;&amp; options.trailing !== <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="comment">// 判断是否设置了定时器和 trailing</span></span><br><span class="line">	    <span class="comment">// 没有的话就开启一个定时器</span></span><br><span class="line">        <span class="comment">// 并且不能不能同时设置 leading 和 trailing</span></span><br><span class="line">        timeout = setTimeout(later, remaining);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wxpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -173,7 +267,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">初衷</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
@@ -182,16 +276,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/13/初衷/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/11/JS挖坑填坑/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/06/13/通信/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          通信
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/19/异步/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">异步</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -211,12 +373,14 @@
 
 
 
+  
+  
+  
 
   
+
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+
   
 
 
@@ -239,8 +403,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
