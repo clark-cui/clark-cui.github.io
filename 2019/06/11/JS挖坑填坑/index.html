@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="崔镕川的博客">
 <meta property="og:description" content="JS挖坑填坑Dom事件流（冒泡） 事件的3个阶段：捕获、目标、冒泡     捕获 事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点    目标 事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发   冒泡 事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点     当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/06/11/JS挖坑填坑/JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C1562483050109.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/11/JS挖坑填坑/JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C22.png">
-<meta property="og:updated_time" content="2019-07-16T15:36:47.713Z">
+<meta property="og:image" content="http://yoursite.com/.com//1562483050109.png">
+<meta property="og:image" content="http://yoursite.com/.com//JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C22.png">
+<meta property="og:updated_time" content="2019-07-16T17:10:28.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS挖坑填坑">
 <meta name="twitter:description" content="JS挖坑填坑Dom事件流（冒泡） 事件的3个阶段：捕获、目标、冒泡     捕获 事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点    目标 事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发   冒泡 事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点     当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/11/JS挖坑填坑/JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C1562483050109.png">
+<meta name="twitter:image" content="http://yoursite.com/.com//1562483050109.png">
   
     <link rel="alternative" href="/atom.xml" title="崔镕川的博客" type="application/atom+xml">
   
@@ -184,7 +184,7 @@
 <blockquote>
 <p> 当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是该节点的某个子节点触发事件，由于事件冒泡，该DOM节点事件也会触发，执行了回调函数，这样就违背了最初的本意了。所以需要阻止冒泡。</p>
 </blockquote>
-<p><img src="JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C1562483050109.png" alt="1562483050109"></p>
+<p><img src="/.com//1562483050109.png" alt="1562483050109"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addEventListener(<span class="string">"eventName"</span>, doSomething, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
 
 <p> 第三个Boolean参数为true时, 表示是否在捕获阶段调用事件处理程序（老版dom），新版dom中第三个参数未option，可选很多参数，详见MDN。</p>
@@ -194,7 +194,7 @@
 
 <h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><h6 id="ES5-原型链"><a href="#ES5-原型链" class="headerlink" title="ES5 原型链"></a>ES5 原型链</h6><p><a href="https://segmentfault.com/a/1190000011801127" target="_blank" rel="noopener">_proto与prototype</a></p>
 <p><a href="https://wangdoc.com/javascript/oop/prototype.html" target="_blank" rel="noopener">阮一峰</a></p>
-<p><img src="JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C22.png" alt="proto"></p>
+<p><img src="/.com//JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91%5C22.png" alt="proto"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Game</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Game.prototype.color = <span class="string">'white'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> game1 = <span class="keyword">new</span> Game(<span class="string">'fly'</span>);</span><br><span class="line"><span class="keyword">var</span> game2 = <span class="keyword">new</span> Game(<span class="string">'mov'</span>);</span><br><span class="line"></span><br><span class="line">cat1.color <span class="comment">// 'white'</span></span><br><span class="line">cat2.color <span class="comment">// 'white'</span></span><br></pre></td></tr></table></figure>
 
 <h6 id="ES6-class"><a href="#ES6-class" class="headerlink" title="ES6 class"></a>ES6 class</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -490,19 +490,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">通信</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
             
             <div class="clearfix"></div>
