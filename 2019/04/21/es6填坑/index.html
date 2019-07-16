@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="崔镕川的博客">
 <meta property="og:description" content="es6填坑数组的扩展运算符 扩展运算符（spread）是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。该运算符主要用于函数调用。  12345let arrAll=[];let arr=[true,true,true,true,true,true,true];// arrAll.push(...arr);  //输出[true,true,true,true,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-15T14:06:21.710Z">
+<meta property="og:updated_time" content="2019-07-16T15:02:12.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6填坑">
 <meta name="twitter:description" content="es6填坑数组的扩展运算符 扩展运算符（spread）是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。该运算符主要用于函数调用。  12345let arrAll=[];let arr=[true,true,true,true,true,true,true];// arrAll.push(...arr);  //输出[true,true,true,true,">
@@ -167,13 +167,16 @@
 <h3 id="call-aplly-bind-箭头与this"><a href="#call-aplly-bind-箭头与this" class="headerlink" title="call aplly bind 箭头与this"></a>call aplly bind 箭头与this</h3><p><code>call</code> 和 <code>apply</code> 都是为了解决改变 <code>this</code> 的指向。作用都是相同的，只是传参的方式不同。</p>
 <p>除了第一个参数外，<code>call</code> 可以接收一个参数列表，<code>apply</code> 只接受一个参数数组。</p>
 <p><code>bind</code> 和其他两个方法作用也是一致的，只是该方法会返回一个函数。并且我们可以通过 <code>bind</code> 实现柯里化。</p>
-<p>箭头函数体内的<code>this</code>对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
+<p>箭头函数体内的<code>this</code>对象，就是定义时所在的对象，而不是使用时所在的对象。不能用call apply bind去改变箭头函数的this指向，因为其指向在定义时就已经固定。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValue</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value)</span><br><span class="line">&#125;</span><br><span class="line">getValue.call(a, <span class="string">'yck'</span>, <span class="string">'24'</span>)</span><br><span class="line">getValue.apply(a, [<span class="string">'yck'</span>, <span class="string">'24'</span>])</span><br></pre></td></tr></table></figure>
 
-<h6 id="不适合用箭头的场合"><a href="#不适合用箭头的场合" class="headerlink" title="不适合用箭头的场合"></a>不适合用箭头的场合</h6><p>第一个场合是定义对象的方法，且该方法内部包括<code>this</code>。</p>
+<h6 id="不适合用箭头的场合"><a href="#不适合用箭头的场合" class="headerlink" title="不适合用箭头的场合"></a>不适合用箭头的场合</h6><p>第一个场合是定义对象的方法，且该方法内部包括<code>this</code>。若用箭头，则this就会指向window，当调用这个方法的时候，this就没法指向调用时的外围实例，从而导致取不到内部的this。</p>
 <p>第二个场合是需要动态<code>this</code>的时候，也不应使用箭头函数。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">'press'</span>);</span><br><span class="line">button.addEventListener(<span class="string">'click'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">this</span>.classList.toggle(<span class="string">'on'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<h3 id="set-map-weakset-weakmap"><a href="#set-map-weakset-weakmap" class="headerlink" title="set map weakset weakmap"></a>set map weakset weakmap</h3><p><a href="https://zh.javascript.info/garbage-collection" target="_blank" rel="noopener">垃圾回收</a></p>
+<p><a href="https://javascript.info/map-set-weakmap-weakset" target="_blank" rel="noopener">垃圾回收机制与weakmap</a></p>
+<p><a href="http://es6.ruanyifeng.com/#docs/set-map#WeakSet" target="_blank" rel="noopener">阮一峰</a></p>
 
       
 
@@ -302,8 +305,8 @@
     </a>
   
   
-    <a href="/2019/04/13/浏览器考点/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">浏览器考点</div>
+    <a href="/2019/04/20/语句、表达式、return/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">语句、表达式、return、index+=</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -421,6 +424,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
@@ -429,31 +436,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">异步</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文档</a>
+                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">通信</a>
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">通信</a>
               </li>
              
               <li class="article-tag-list-item">

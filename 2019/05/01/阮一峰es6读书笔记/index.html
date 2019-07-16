@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 文档 | 崔镕川的博客</title>
+  <title>阮一峰es6读书笔记 | 崔镕川的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录笔记，分享生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="崔镕川的博客">
-<meta property="og:url" content="http://yoursite.com/tags/文档/index.html">
+  <meta name="description" content="阮一峰es6读书笔记语句、表达式、return原生模拟iterator12345678910111213141516var it = makeIterator([&apos;a&apos;, &apos;b&apos;]);it.next() // &amp;#123; value: &quot;a&quot;, done: false &amp;#125;it.next() // &amp;#123; value: &quot;b&quot;, done: false &amp;#125;it.next(">
+<meta name="keywords" content="es6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阮一峰es6读书笔记">
+<meta property="og:url" content="http://yoursite.com/2019/05/01/阮一峰es6读书笔记/index.html">
 <meta property="og:site_name" content="崔镕川的博客">
-<meta property="og:description" content="记录笔记，分享生活">
+<meta property="og:description" content="阮一峰es6读书笔记语句、表达式、return原生模拟iterator12345678910111213141516var it = makeIterator([&apos;a&apos;, &apos;b&apos;]);it.next() // &amp;#123; value: &quot;a&quot;, done: false &amp;#125;it.next() // &amp;#123; value: &quot;b&quot;, done: false &amp;#125;it.next(">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-16T15:07:18.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="崔镕川的博客">
-<meta name="twitter:description" content="记录笔记，分享生活">
+<meta name="twitter:title" content="阮一峰es6读书笔记">
+<meta name="twitter:description" content="阮一峰es6读书笔记语句、表达式、return原生模拟iterator12345678910111213141516var it = makeIterator([&apos;a&apos;, &apos;b&apos;]);it.next() // &amp;#123; value: &quot;a&quot;, done: false &amp;#125;it.next() // &amp;#123; value: &quot;b&quot;, done: false &amp;#125;it.next(">
   
     <link rel="alternative" href="/atom.xml" title="崔镕川的博客" type="application/atom+xml">
   
@@ -137,60 +139,262 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-阮一峰es6读书笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/13/看懂文档/" class="archive-article-date">
-  	<time datetime="2019-05-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/13/看懂文档/">看懂文档</a>
+    <h1 class="article-title" itemprop="name">
+      阮一峰es6读书笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/01/阮一峰es6读书笔记/" class="archive-article-date">
+  	<time datetime="2019-05-01T01:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="阮一峰es6读书笔记"><a href="#阮一峰es6读书笔记" class="headerlink" title="阮一峰es6读书笔记"></a>阮一峰es6读书笔记</h1><h3 id="语句、表达式、return"><a href="#语句、表达式、return" class="headerlink" title="语句、表达式、return"></a>语句、表达式、return</h3><h5 id="原生模拟iterator"><a href="#原生模拟iterator" class="headerlink" title="原生模拟iterator"></a>原生模拟iterator</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> it = makeIterator([<span class="string">'a'</span>, <span class="string">'b'</span>]);</span><br><span class="line"></span><br><span class="line">it.next() <span class="comment">// &#123; value: "a", done: false &#125;</span></span><br><span class="line">it.next() <span class="comment">// &#123; value: "b", done: false &#125;</span></span><br><span class="line">it.next() <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeIterator</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> nextIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    next: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> nextIndex &lt; array.length ?</span><br><span class="line">        &#123;<span class="attr">value</span>: array[nextIndex++], <span class="attr">done</span>: <span class="literal">false</span>&#125; :</span><br><span class="line">        &#123;<span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##### </p>
+<h5 id="补充函数声明的3种方式"><a href="#补充函数声明的3种方式" class="headerlink" title="补充函数声明的3种方式"></a>补充函数声明的3种方式</h5><table>
+<thead>
+<tr>
+<th>函数声明</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>function print (...args){}</code></td>
+<td>function命令</td>
+</tr>
+<tr>
+<td><code>var print =function(...args){}</code></td>
+<td>函数表达式</td>
+</tr>
+<tr>
+<td><code>var print =new Function(...args,{})</code></td>
+<td>Function构造函数</td>
+</tr>
+</tbody></table>
+<h5 id="方法的两种写法"><a href="#方法的两种写法" class="headerlink" title="方法的两种写法"></a>方法的两种写法</h5><table>
+<thead>
+<tr>
+<th>方法</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>print(...args){}</code></td>
+<td>缩写</td>
+</tr>
+<tr>
+<td><code>print:function(...args){}</code></td>
+<td>一般写法（也算是表达式类的写法类似a:3或者1+3）</td>
+</tr>
+</tbody></table>
+<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><h6 id="表达式、语句"><a href="#表达式、语句" class="headerlink" title="表达式、语句"></a>表达式、语句</h6><blockquote>
+<p>此处附上阮一峰es5中关于语句与表达式的描述</p>
+<p>语句（statement）是为了完成某种任务而进行的操作，比如下面就是一行赋值语句。</p>
+<p><code>1 + 3</code>叫做表达式（expression），指一个为了得到返回值的计算式。</p>
+<p>语句和表达式的区别在于，前者主要为了进行某种操作，一般情况下不需要返回值；后者则是为了得到返回值，一定会返回一个值。表达式一般放在函数的return里面。或者一些api，比如vue的几个钩子，data里面的return，methods里面，放的都是表达式。</p>
+</blockquote>
+<p>此处代码，定义了makeIterrator函数，其中返回一个方法next</p>
+<p>这里为什么要把next放到return里面,为什么要在next方法里面也return</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果直接这么写，不要第一个return，会报错</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeIterator</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> nextIndex = <span class="number">0</span>;</span><br><span class="line">    next: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;                  <span class="comment">//这里也可以next()&#123;&#125;</span></span><br><span class="line">      <span class="keyword">return</span> nextIndex &lt; array.length ?</span><br><span class="line">        &#123;<span class="attr">value</span>: array[nextIndex++], <span class="attr">done</span>: <span class="literal">false</span>&#125; :</span><br><span class="line">        &#123;<span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//因为这么写，相当于a:3，这么写肯定是错的啊，只有值，没有对应的赋值操作。要不就这么写let next=function()&#123;&#125;,这样语法是对的，但你在一个函数里再声明一个函数有啥用嘞。</span></span><br><span class="line"><span class="comment">//故需要借助return,把这个方法给返回出来，当你调用这个函数的时候，就返回一个数据结构，内部有一个可以调用的next方法。</span></span><br><span class="line"><span class="comment">//next方法内的return，同理， &#123;value: array[nextIndex++], done: false&#125;，这个东西只是一个值，你需要赋值操作或者return出来。赋值没意义， 要把这个值给renturn出来，不然虽然你处理了这个值，但不return的话，外面取不到这个值，也没啥用。</span></span><br><span class="line"><span class="comment">//此处用var it = makeIterator(['a', 'b']);是因为，需要把这个返回的数据结构赋值给一个变量。不然你直接this. makeIterator(['a', 'b']);虽然语法不会报错，但没有意义，的确生成了一个数据结构，但你没有把他赋值给任何变量，从而你访问不到这个数据结构。</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="return的区分"><a href="#return的区分" class="headerlink" title="return的区分"></a>return的区分</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> index &lt;(x.length)? &#123;<span class="attr">value</span>:x[index++],<span class="attr">done</span>:<span class="literal">false</span>&#125;:&#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125; <span class="comment">//正确</span></span><br><span class="line"><span class="keyword">return</span>&#123;index &lt;(x.length)? &#123;<span class="attr">value</span>:x[index++],<span class="attr">done</span>:<span class="literal">false</span>&#125;:&#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;&#125;<span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+
+<p>return 一个值，比如return 0;</p>
+<p>return一个对象 ，比如vue中的data，return{x:1,y:2};</p>
+<p>此处明显是return一个已经有括号的对象出来，就不要加括号了，此处的括号不是代码块的意思，也不能在外面包一个括号表示代码块，因为return后面肯定是跟一个值的，就不会是语句，所以不要用代码块{}，尽管代码不会报错，但某些检查工具会提示错误，这样写也没意义。</p>
+<h6 id="函数传递参数"><a href="#函数传递参数" class="headerlink" title="函数传递参数"></a>函数传递参数</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeGenerator</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> index =<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        next()&#123;</span><br><span class="line">            <span class="keyword">return</span> index &lt;(x.length)? &#123;<span class="attr">value</span>:x[index++],<span class="attr">done</span>:<span class="literal">false</span>&#125;:         &#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//next里的x用的是makeGenerator（x）传进来的x</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeGenerator</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> index =<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        next(x)&#123;</span><br><span class="line">            <span class="keyword">return</span> index &lt;(x.length)? &#123;<span class="attr">value</span>:x[index++],<span class="attr">done</span>:<span class="literal">false</span>&#125;:&#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a= makeGenerator(x);</span><br><span class="line">a.next(x);</span><br><span class="line"><span class="comment">//此处 makeGenerator(x)传进去的x并没有使用，next里面的x,是在调用next方法时传禁区的x（优先匹配上一级）</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="index-与-index"><a href="#index-与-index" class="headerlink" title="index++ 与++index"></a>index++ 与++index</h6><p>通用的一种数据结构处理的写法，算是表达式的一种，会改变Index的值。前者先用，用完再加。后者先加，加完再用。此处这么写可以简化少写一句index+=1;</p>
+<h6 id="index-1"><a href="#index-1" class="headerlink" title="index+=1"></a>index+=1</h6><p>此处补充一点c语言/java中的小数计算。</p>
+<p>JS中，当他们都是Number都为整数的时候，a=a+1与a+=1是一样的。(String也会被转换Number)</p>
+<p>但在java/c中，两者不一定相等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java中</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       <span class="keyword">short</span> a=<span class="number">1</span>;</span><br><span class="line">       a+=<span class="number">1</span>;   <span class="comment">//a=2</span></span><br><span class="line">       <span class="keyword">short</span> b=<span class="number">1</span>;</span><br><span class="line">       b=b+<span class="number">1</span>;  <span class="comment">//报错，因为b是short,1是init</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c中</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">2</span>;</span><br><span class="line">a += <span class="number">1.2</span>;    <span class="comment">// 不报错，最终 a = 3</span></span><br><span class="line">a = a + <span class="number">1.2</span>; <span class="comment">// 报错，a是init,1.2不是init</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Iterator遍历器"><a href="#Iterator遍历器" class="headerlink" title="Iterator遍历器"></a>Iterator遍历器</h3><blockquote>
+<p>遍历器（Iterator）一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作。Iterator 的作用可以是提供一个访问接口来顺序遍历数据结构（他并不能直接遍历，他只是一个接口，需要外部去访问调用他），主要供for..of消费。</p>
+<p>本质上来说遍历器对象就是一个指针对象，通过next()来改变指向。</p>
+</blockquote>
+<h3 id="Set与Map"><a href="#Set与Map" class="headerlink" title="Set与Map"></a>Set与Map</h3><h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><h5 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h5><blockquote>
+<p>这里提到了<code>Set.prototype.values()/keys()/entries()</code>均返回<strong>遍历器</strong>。遍历器不要直接输出，输出的结果不太好。只能通过循环或者用<code>generator</code>中的<code>next</code>进行挨个输出。</p>
+</blockquote>
+<h6 id="例如直接输出set结构与分别输出不一样"><a href="#例如直接输出set结构与分别输出不一样" class="headerlink" title="例如直接输出set结构与分别输出不一样"></a>例如直接输出set结构与分别输出不一样</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> b=<span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(b.entries())</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> b.entries())</span><br><span class="line">&#123; <span class="built_in">console</span>.log(i)&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">[Set Iterator] &#123; 1, 2, 3, 4, 5 &#125;</span></span><br><span class="line"><span class="comment">[ 1, 1 ]</span></span><br><span class="line"><span class="comment">[ 2, 2 ]</span></span><br><span class="line"><span class="comment">[ 3, 3 ]</span></span><br><span class="line"><span class="comment">[ 4, 4 ]</span></span><br><span class="line"><span class="comment">[ 5, 5 ]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="mdn中关于Set-prototype-entries-用next输出"><a href="#mdn中关于Set-prototype-entries-用next输出" class="headerlink" title="mdn中关于Set.prototype.entries()用next输出"></a>mdn中关于Set.prototype.entries()用next输出</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mySet = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">mySet.add(<span class="string">"foobar"</span>);</span><br><span class="line">mySet.add(<span class="number">1</span>);</span><br><span class="line">mySet.add(<span class="string">"baz"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> setIter = mySet.entries();</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">console.log(setIter.next().value); // ["foobar", "foobar"]</span></span><br><span class="line"><span class="comment">console.log(setIter.next().value); // [1, 1]</span></span><br><span class="line"><span class="comment">console.log(setIter.next().value); // ["baz", "baz"]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wxpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文档</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/01/阮一峰es6读书笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/05/04/git常用整理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          git自用整理
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/04/25/linux常用整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux自用整理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -213,9 +417,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -275,6 +479,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
@@ -283,31 +491,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">异步</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文档</a>
+                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">通信</a>
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">通信</a>
               </li>
              
               <li class="article-tag-list-item">
