@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="崔镕川的博客">
 <meta property="og:description" content="git常用整理git git教程  ​       git官方文档​       git廖雪峰​       git工作流  流程工作区(working tree)—暂存区(stage)—版本库（master分支）—远程库(remote) working is clean (工作区没东西，一般是add之后，东西都放入暂存区了) untracked(未添加到工作区（add），没有被跟踪) not s">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/1.png">
-<meta property="og:image" content="http://yoursite.com/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/2.png">
-<meta property="og:image" content="http://yoursite.com/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/3.png">
-<meta property="og:image" content="http://yoursite.com/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/4.png">
-<meta property="og:image" content="http://yoursite.com/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/5.png">
-<meta property="og:image" content="http://yoursite.com/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/6.png">
-<meta property="og:updated_time" content="2019-07-16T17:02:04.959Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/6.png">
+<meta property="og:updated_time" content="2019-07-16T17:06:25.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用整理">
 <meta name="twitter:description" content="git常用整理git git教程  ​       git官方文档​       git廖雪峰​       git工作流  流程工作区(working tree)—暂存区(stage)—版本库（master分支）—远程库(remote) working is clean (工作区没东西，一般是add之后，东西都放入暂存区了) untracked(未添加到工作区（add），没有被跟踪) not s">
-<meta name="twitter:image" content="http://yoursite.com/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/04/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/1.png">
   
     <link rel="alternative" href="/atom.xml" title="崔镕川的博客" type="application/atom+xml">
   
@@ -428,20 +428,20 @@
 <p><code>stash</code>在英文中的意思是：隐藏。在 Git 代码管理的过程中，它的作用也是隐藏没完成的代码，防止它干扰 别人 或者 新分支的工作。</p>
 <h6 id="试一试"><a href="#试一试" class="headerlink" title="试一试"></a>试一试</h6><p>假设：正当我在 master 分支上写着文档时候（<em>没有完成、没有提交</em>），同事发现 <code>hello.py</code> 这个脚本有问题，紧急报告给我进行修复。</p>
 <p>收到报告，下意识就是开一个 debug 分支来处理 bug。但是，现在的文档没完成，自然无法提交，又不能把没提交的东西带入到新创建的 debug 分支（<em>执意如此，我也没办法 : )</em>）。目前，status 如下：</p>
-<p><img src="/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/1.png" alt></p>
+<p><img src="../images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/1.png" alt></p>
 <p>为了达到目的，分为以下几步：</p>
 <ol>
 <li>隐藏修改：<code>git stash</code> : </li>
 </ol>
-<p>   <img src="/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/2.png" alt></p>
+<p>   <img src="../images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/2.png" alt></p>
 <p>2.创建新分支：<code>git branch debug</code> : </p>
-<p><img src="/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/3.png" alt></p>
+<p><img src="../images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/3.png" alt></p>
 <p>3.在<code>debug</code>分支上修复 bug, 并且将修改添加到 log 中 : </p>
-<p><img src="/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/4.png" alt></p>
+<p><img src="../images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/4.png" alt></p>
 <p>4.回到<code>master</code>分支, 合并<code>debug</code>分支的修改, 并且删除 <code>debug</code> 分支 : </p>
-<p><img src="/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/5.png" alt></p>
+<p><img src="../images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/5.png" alt></p>
 <p>5.重新显示隐藏的<code>stash</code>，并且将其从<code>stash list</code>列表中删除 : </p>
-<p><img src="/images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/6.png" alt></p>
+<p><img src="../images/git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86/6.png" alt></p>
 <p>6.完成。第五步的两条命令可以用<code>git stash pop</code>,第二部可以用<code>git checkout -b debug</code></p>
 <blockquote>
 <p>在实际生产过程中，难免会遇到多个 stash 的情况。此时，他们的 id 默认都是：<code>stash{0}</code>, <code>stash{1}</code>, <code>stash{2}</code> … …</p>
@@ -701,15 +701,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">通信</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,6 +710,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">通信</a>
               </li>
             
             <div class="clearfix"></div>
