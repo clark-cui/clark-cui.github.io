@@ -421,20 +421,32 @@
 <p><code>stash</code>在英文中的意思是：隐藏。在 Git 代码管理的过程中，它的作用也是隐藏没完成的代码，防止它干扰 别人 或者 新分支的工作。</p>
 <h6 id="试一试"><a href="#试一试" class="headerlink" title="试一试"></a>试一试</h6><p>假设：正当我在 master 分支上写着文档时候（<em>没有完成、没有提交</em>），同事发现 <code>hello.py</code> 这个脚本有问题，紧急报告给我进行修复。</p>
 <p>收到报告，下意识就是开一个 debug 分支来处理 bug。但是，现在的文档没完成，自然无法提交，又不能把没提交的东西带入到新创建的 debug 分支（<em>执意如此，我也没办法 : )</em>）。目前，status 如下：</p>
+<img src="/.com//07/04/git常用整理/1.png">
+
 <p><img src="/.com//git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86%5C1.png" alt></p>
 <p>为了达到目的，分为以下几步：</p>
 <ol>
 <li><p>隐藏修改：<code>git stash</code> : </p>
+<img src="/.com//07/04/git常用整理/2.png">
+
 <p><img src="/.com//git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86%5C2.png" alt></p>
 </li>
 </ol>
 <p>2.创建新分支：<code>git branch debug</code> : </p>
+<img src="/.com//07/04/git常用整理/3.png">
+
 <p><img src="/.com//git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86%5C3.png" alt></p>
 <p>3.在<code>debug</code>分支上修复 bug, 并且将修改添加到 log 中 : </p>
+<img src="/.com//07/04/git常用整理/4.png">
+
 <p><img src="/.com//git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86%5C4.png" alt></p>
 <p>4.回到<code>master</code>分支, 合并<code>debug</code>分支的修改, 并且删除 <code>debug</code> 分支 : </p>
+<img src="/.com//07/04/git常用整理/5.png">
+
 <p><img src="/.com//git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86%5C5.png" alt></p>
 <p>5.重新显示隐藏的<code>stash</code>，并且将其从<code>stash list</code>列表中删除 : </p>
+<img src="/.com//07/04/git常用整理/6.png">
+
 <p><img src="/.com//git%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86%5C6.png" alt></p>
 <p>6.完成。第五步的两条命令可以用<code>git stash pop</code>,第二部可以用<code>git checkout -b debug</code></p>
 <blockquote>
