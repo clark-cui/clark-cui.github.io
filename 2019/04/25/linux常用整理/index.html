@@ -452,25 +452,29 @@
   
 
   
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "decodeURI(window.location.pathname)",
-  owner: 'clark-cui',
-  repo: 'clark-cui.github.io',
-  oauth: {
-    client_id: 'c38df660ef9628c41489',
-    client_secret: 'caf165cb00c569dc41456a165a242b096250530e',
-  },
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'c38df660ef9628c41489',
+  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
+  	repo: 'mycoments',
+  	owner: 'clark-cui',
+  	admin: ['clark-cui'],
+  	id: 'Thu Apr 25 2019 20:46:25 GMT+0800',
+  	distractionFreeMode: 'true'
 })
-gitment.render('gitment-ctn')
+gitalk.render('gitalk-container') 
+}
 </script>
-
-
   
-
 
           </div>
         </div>
