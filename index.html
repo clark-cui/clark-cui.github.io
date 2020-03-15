@@ -215,26 +215,28 @@ gitalk.render('gitalk-container')
   
 
   
-    <article id="post-工作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-node" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/01/node/">node笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/01/node/" class="archive-article-date">
+  	<time datetime="2019-11-01T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h4><h6 id="拼多多"><a href="#拼多多" class="headerlink" title="拼多多"></a>拼多多</h6><p>有年底或者过完年想换工作的童鞋吗？</p>
-<p>我们部门现在招 BI、前端和后端。</p>
-<p>只要够优秀，没有硬性要求。有以下几个优势会更好：</p>
-<ul>
-<li>1.拥有一线互联网大厂背景</li>
-<li>2.985 院校毕业</li>
-<li>3.3 年以上丰富的工作经验</li>
-<li>4.有自己的开源作品等</li>
-</ul>
-<p>有想法的童鞋可以加我 wx:eXpobG92ZXpoeTYxMQ== (base64)。</p>
-<h6 id="玩吧"><a href="#玩吧" class="headerlink" title="玩吧"></a>玩吧</h6><p> 例如我是 98年的… 所有年限大家不用担心，我的技术能力，我的博客可以反映一部分：<a href="https://notes.itzkp.com/" target="_blank" rel="noopener"><img src="https://b-gold-cdn.xitu.io/v3/static/img/pin-url-link.3f843e8.svg" alt="https://notes.itzkp.com">notes.itzkp.com</a>  ，如果大家实力和我差不多，可以简历发邮件到：<a href="mailto:270750933@qq.com" target="_blank" rel="noopener">270750933@qq.com</a> ，我会给你内推的… 真的很缺人… </p>
-<p>微软中国</p>
-<p> <a href="https://blog.joouis.com/recruit/" target="_blank" rel="noopener">https://blog.joouis.com/recruit/</a>  <a href="https://www.v2ex.com/t/562136#reply160" target="_blank" rel="noopener">https://www.v2ex.com/t/562136#reply160</a></p>
-<p>潘家陈</p>
-<p> <a href="https://github.com/PanJiaChen?tab=overview&amp;from=2018-12-01&amp;to=2018-12-31" target="_blank" rel="noopener">https://github.com/PanJiaChen?tab=overview&amp;from=2018-12-01&amp;to=2018-12-31</a> </p>
+        <h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1><h4 id="referenceError"><a href="#referenceError" class="headerlink" title="referenceError"></a>referenceError</h4><p> 在node环境中会报错ReferenceError: Image is not defined。因为Node中没有图片对象 。除此之外，node中也没有很多浏览器才有的对象接口。</p>
+<p>vscode中的 run插件只是模拟了Node环境，却并不是浏览器，故用其做很多调试运算也不能，可以选择在chrome中进行调试</p>
 
       
 
@@ -243,11 +245,22 @@ gitalk.render('gitalk-container')
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/15/工作/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/01/node/">展开全文 >></a>
         </p>
       
 
@@ -380,102 +393,6 @@ gitalk.render('gitalk-container')
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/11/01/Vue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'c38df660ef9628c41489',
-  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
-  	repo: 'mycoments',
-  	owner: 'clark-cui',
-  	admin: ['clark-cui'],
-  	id: '',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
-
-  
-    <article id="post-vscode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/vscode/">vscode笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/01/vscode/" class="archive-article-date">
-  	<time datetime="2019-11-01T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h1><h4 id="打开新窗口"><a href="#打开新窗口" class="headerlink" title="打开新窗口"></a>打开新窗口</h4><p>ctrl shift n </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/01/vscode/">展开全文 >></a>
         </p>
       
 
@@ -674,19 +591,19 @@ gitalk.render('gitalk-container')
   
 
   
-    <article id="post-node" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vscode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/node/">node笔记</a>
+      <a class="article-title" href="/2019/11/01/vscode/">vscode笔记</a>
     </h1>
   
 
         
-        <a href="/2019/11/01/node/" class="archive-article-date">
+        <a href="/2019/11/01/vscode/" class="archive-article-date">
   	<time datetime="2019-11-01T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
 </a>
         
@@ -694,8 +611,7 @@ gitalk.render('gitalk-container')
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1><h4 id="referenceError"><a href="#referenceError" class="headerlink" title="referenceError"></a>referenceError</h4><p> 在node环境中会报错ReferenceError: Image is not defined。因为Node中没有图片对象 。除此之外，node中也没有很多浏览器才有的对象接口。</p>
-<p>vscode中的 run插件只是模拟了Node环境，却并不是浏览器，故用其做很多调试运算也不能，可以选择在chrome中进行调试</p>
+        <h1 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h1><h4 id="打开新窗口"><a href="#打开新窗口" class="headerlink" title="打开新窗口"></a>打开新窗口</h4><p>ctrl shift n </p>
 
       
 
@@ -709,7 +625,7 @@ gitalk.render('gitalk-container')
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
         		</li>
       		
 		</ul>
@@ -719,7 +635,7 @@ gitalk.render('gitalk-container')
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/01/node/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/01/vscode/">展开全文 >></a>
         </p>
       
 
@@ -819,210 +735,6 @@ gitalk.render('gitalk-container')
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/11/01/正则/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'c38df660ef9628c41489',
-  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
-  	repo: 'mycoments',
-  	owner: 'clark-cui',
-  	admin: ['clark-cui'],
-  	id: '',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
-
-  
-    <article id="post-TODO List" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/30/TODO List/">TODOList</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/30/TODO List/" class="archive-article-date">
-  	<time datetime="2019-10-30T07:13:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="TODO-List"><a href="#TODO-List" class="headerlink" title="TODO List"></a>TODO List</h1><blockquote>
-<p>这是一个挖坑列表，挖得坑一点点填，填一个勾一个</p>
-</blockquote>
-<ul>
-<li><input disabled type="checkbox"> <p><a href="https://juejin.im/editor/guide/markdown" target="_blank" rel="noopener">掘金的markdown指南</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://cnodejs.org/topic/5d85edfb95464514f7ed8d7d" target="_blank" rel="noopener">node框架的排行</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://juejin.im/post/5d89ac2ff265da03c34c3cd2" target="_blank" rel="noopener">寒冬面试笔记</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://juejin.im/post/5da89691f265da5ba532b97b" target="_blank" rel="noopener">简历推荐</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://cnodejs.org/topic/5d6697d3421846662d985894" target="_blank" rel="noopener">CNode学习笔记</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://chenshenhai.github.io/koajs-design-note/note/chapter01/06.html" target="_blank" rel="noopener">CNode学习笔记</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://blog.phpgao.com/" target="_blank" rel="noopener">老高翻墙博客</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.v2ex.com/t/607766#reply0" target="_blank" rel="noopener">作业帮招聘</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://segmentfault.com/a/1190000020487781?utm_source=tuicool&utm_medium=referral" target="_blank" rel="noopener"> serveless </a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://mp.weixin.qq.com/s?__biz=MzUxMTcwOTM4Mg==&mid=2247485771&idx=1&sn=343c850eb9f03641ed7b9e03118323ea&utm_source=tuicool&utm_mediu" target="_blank" rel="noopener">南瓜故事的flutter之路</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://segmentfault.com/a/1190000020505870?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly" target="_blank" rel="noopener">手写promise</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://juejin.im/post/5b16800fe51d4506ae719bae" target="_blank" rel="noopener">手写promise</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://yuchengkai.cn/docs/frontend/" target="_blank" rel="noopener">前端知识博客</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.toutiao.com/i6735054756739285512/" target="_blank" rel="noopener">代码简写技巧上</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://mp.weixin.qq.com/s?__biz=MzI3ODg2OTY1OQ==&mid=2247484410&idx=1&sn=5dde8b636d9592ae4c26fdd226db3b5b&chksm=eb51200edc26a91869c376a69bd0226088a9048f937489ccb0c00d2659e7944c5176c98d1de2&scene=21#wechat_redirect" target="_blank" rel="noopener">java书单</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.toutiao.com/i6735370276046897667/" target="_blank" rel="noopener">代码简写技巧下</a> </p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.toutiao.com/c/user/111108662858/#mid=1642801490817038" target="_blank" rel="noopener">头条用户</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="http://www.nginx.cn/doc/" target="_blank" rel="noopener">nginx</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://hijiangtao.github.io/2019/08/25/JavaScript-Module-Definitions-and-Webpack-Configurations-Notes/?utm_source=tuicool&utm_medium=referral" target="_blank" rel="noopener">js模块</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://zhuanlan.zhihu.com/p/81661591?utm_source=tuicool&utm_medium=referral" target="_blank" rel="noopener">来写一个漂亮的readme吧</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://caniuse.com/" target="_blank" rel="noopener">can i use</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.overleaf.com/" target="_blank" rel="noopener">公式论文latex</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://segmentfault.com/a/1190000016627804" target="_blank" rel="noopener">组件传值</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://segmentfault.com/a/1190000020796713?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly" target="_blank" rel="noopener">组件传值</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://juejin.im/post/5d23e750f265da1b855c7bbe" target="_blank" rel="noopener">前端百问</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://zh.javascript.info/map-set-weakmap-weakset" target="_blank" rel="noopener">一个js教程</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.yuque.com/robinson/jser" target="_blank" rel="noopener">语雀</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://css-tricks.com/" target="_blank" rel="noopener">css-tricks</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://segmentfault.com/a/1190000019207842#articleHeader30" target="_blank" rel="noopener">移动端适配</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://juejin.im/post/5d2d7a67f265da1bb5652b91" target="_blank" rel="noopener">grid好文</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://juejin.im/post/5d2bf33a6fb9a07eae2a8dd6" target="_blank" rel="noopener">面试笔记</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">风雅与的博客</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://yuchengkai.cn/docs/frontend/" target="_blank" rel="noopener">虞城凯的博客</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://github.com/Advanced-Frontend" target="_blank" rel="noopener">木易杨博客</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://xin-tan.com/" target="_blank" rel="noopener">心谈博客</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://segmentfault.com/q/1010000013088053" target="_blank" rel="noopener">event</a></p>
-</li>
-<li><input disabled type="checkbox"> <p>学习表单元素 datalist select input</p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://segmentfault.com/a/1190000015597029" target="_blank" rel="noopener">图片跨域</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://oo.t9t.io/jobs" target="_blank" rel="noopener">国外工作</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.gitignore.io/" target="_blank" rel="noopener">快速生成gitgnore</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="http://tanqingbo.com/2019/10/30/%E6%9C%80%E8%AE%A9%E4%BD%A0%E9%9C%87%E6%83%8A%E7%9A%84%E7%BD%91%E7%AB%99%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/" target="_blank" rel="noopener">资源下载</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://hit-alibaba.github.io/interview/index.html" target="_blank" rel="noopener">基础知识</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.zhihu.com/question/350289336/answer/873350617?utm_source=qq&utm_medium=social&utm_oi=1114657556978700288&hb_wx_block=0" target="_blank" rel="noopener">源码基础</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://jsdoc.app/" target="_blank" rel="noopener">jsdoc写注释</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://segmentfault.com/a/1190000004558796" target="_blank" rel="noopener">写自动化测试</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="http://tanqingbo.com/2019/11/13/%E6%9C%89%E5%93%AA%E4%BA%9B%E6%AF%94%E8%BE%83%E5%A5%BD%E7%9A%84%E5%9C%A8%E7%BA%BF%E7%BC%96%E7%A8%8B%E7%BD%91%E7%AB%99/" target="_blank" rel="noopener">常用网站</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://mp.weixin.qq.com/s/iWP2gqes95A6_fvVbGwdOQ" target="_blank" rel="noopener">常用网站2</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="http://www.officeplus.cn/Template/Home.shtml" target="_blank" rel="noopener">officePlus</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="https://www.allhistory.com/" target="_blank" rel="noopener">全历史</a></p>
-</li>
-<li><input disabled type="checkbox"> <p><a href="http://tanqingbo.com/2019/12/02/有哪些面向新手的个人理财书籍值得推荐？/" target="_blank" rel="noopener">理财</a></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@touchstart=&quot;touchStart&quot; @touchmove=&quot;touchMove&quot; @touchEnd=&quot;touchEnd&quot;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/30/TODO List/">展开全文 >></a>
         </p>
       
 
@@ -1634,6 +1346,203 @@ gitalk.render('gitalk-container')
   
 
   
+    <article id="post-对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/29/对象/">对象</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/29/对象/" class="archive-article-date">
+  	<time datetime="2019-06-29T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">properties[someName]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>对象属性的特殊写法，当属性名是变量（不确定是哪个字符串）的时候需要这么写，因为<code>properties.someName</code>的写法要求<code>someName</code>是字符串</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/29/对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'c38df660ef9628c41489',
+  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
+  	repo: 'mycoments',
+  	owner: 'clark-cui',
+  	admin: ['clark-cui'],
+  	id: '',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
+
+  
+    <article id="post-通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/13/通信/">通信</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/13/通信/" class="archive-article-date">
+  	<time datetime="2019-06-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h1><h3 id="H5-websocket"><a href="#H5-websocket" class="headerlink" title="H5 websocket"></a>H5 websocket</h3><p><a href="https://xin-tan.com/passages/2018-08-19-websocket-group-chat/#_1-%E6%A6%82%E8%BF%B0" target="_blank" rel="noopener">心谭博客</a></p>
+<h3 id="H5-serviceworker"><a href="#H5-serviceworker" class="headerlink" title="H5 serviceworker"></a>H5 serviceworker</h3><p><a href="https://xin-tan.com/passages/2019-04-02-pwa-service-worker/#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D" target="_blank" rel="noopener">xin-tan</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">通信</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/13/通信/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'c38df660ef9628c41489',
+  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
+  	repo: 'mycoments',
+  	owner: 'clark-cui',
+  	admin: ['clark-cui'],
+  	id: '',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1648,7 +1557,7 @@ gitalk.render('gitalk-container')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 崔镕川
+    		&copy; 2020 崔镕川
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1723,15 +1632,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1739,7 +1640,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1747,15 +1652,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1763,11 +1668,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1776,10 +1689,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
               </li>
              
               <li class="article-tag-list-item">

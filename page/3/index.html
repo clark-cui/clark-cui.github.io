@@ -139,380 +139,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-语句、表达式、return" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/20/语句、表达式、return/">语句、表达式、return、index+=</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/20/语句、表达式、return/" class="archive-article-date">
-  	<time datetime="2019-04-20T02:02:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="语句、表达式、return、index"><a href="#语句、表达式、return、index" class="headerlink" title="语句、表达式、return、index+="></a>语句、表达式、return、index+=</h1><blockquote>
-<p>平常用Ide写代码不会注意这些，但自己偶尔手写的时候就会出各种问题，故整理一下。</p>
-<p>举个es6中iterator的第一个示例代码</p>
-</blockquote>
-<h5 id="原生模拟iterator"><a href="#原生模拟iterator" class="headerlink" title="原生模拟iterator"></a>原生模拟iterator</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> it = makeIterator([<span class="string">'a'</span>, <span class="string">'b'</span>]);</span><br><span class="line"></span><br><span class="line">it.next() <span class="comment">// &#123; value: "a", done: false &#125;</span></span><br><span class="line">it.next() <span class="comment">// &#123; value: "b", done: false &#125;</span></span><br><span class="line">it.next() <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeIterator</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> nextIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    next: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> nextIndex &lt; array.length ?</span><br><span class="line">        &#123;<span class="attr">value</span>: array[nextIndex++], <span class="attr">done</span>: <span class="literal">false</span>&#125; :</span><br><span class="line">        &#123;<span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="补充函数声明的3种方式"><a href="#补充函数声明的3种方式" class="headerlink" title="补充函数声明的3种方式"></a>补充函数声明的3种方式</h5><table>
-<thead>
-<tr>
-<th>函数声明</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>function print (...args){}</code></td>
-<td>function命令</td>
-</tr>
-<tr>
-<td><code>var print =function(...args){}</code></td>
-<td>函数表达式</td>
-</tr>
-<tr>
-<td><code>var print =new Function(...args,{})</code></td>
-<td>Function构造函数</td>
-</tr>
-</tbody></table>
-<h5 id="方法的两种写法"><a href="#方法的两种写法" class="headerlink" title="方法的两种写法"></a>方法的两种写法</h5><table>
-<thead>
-<tr>
-<th>方法</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>print(...args){}</code></td>
-<td>缩写</td>
-</tr>
-<tr>
-<td><code>print:function(...args){}</code></td>
-<td>一般写法（也算是表达式类的写法类似a:3或者1+3）</td>
-</tr>
-</tbody></table>
-<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><h6 id="表达式、语句"><a href="#表达式、语句" class="headerlink" title="表达式、语句"></a>表达式、语句</h6><blockquote>
-<p>此处附上阮一峰es5中关于语句与表达式的描述</p>
-<p>语句（statement）是为了完成某种任务而进行的操作，比如下面就是一行赋值语句。</p>
-<p><code>1 + 3</code>叫做表达式（expression），指一个为了得到返回值的计算式。</p>
-<p>语句和表达式的区别在于，前者主要为了进行某种操作，一般情况下不需要返回值；后者则是为了得到返回值，一定会返回一个值。表达式一般放在函数的return里面。或者一些api，比如vue的几个钩子，data里面的return，methods里面，放的都是表达式。</p>
-</blockquote>
-<p>此处代码，定义了makeIterrator函数，其中返回一个方法next</p>
-<p>这里为什么要把next放到return里面,为什么要在next方法里面也return</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果直接这么写，不要第一个return，会报错</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeIterator</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> nextIndex = <span class="number">0</span>;</span><br><span class="line">    next: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;                  <span class="comment">//这里也可以next()&#123;&#125;</span></span><br><span class="line">      <span class="keyword">return</span> nextIndex &lt; array.length ?</span><br><span class="line">        &#123;<span class="attr">value</span>: array[nextIndex++], <span class="attr">done</span>: <span class="literal">false</span>&#125; :</span><br><span class="line">        &#123;<span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//因为这么写，相当于a:3，这么写肯定是错的啊，只有值，没有对应的赋值操作。要不就这么写let next=function()&#123;&#125;,这样语法是对的，但你在一个函数里再声明一个函数有啥用嘞。</span></span><br><span class="line"><span class="comment">//故需要借助return,把这个方法给返回出来，当你调用这个函数的时候，就返回一个数据结构，内部有一个可以调用的next方法。</span></span><br><span class="line"><span class="comment">//next方法内的return，同理， &#123;value: array[nextIndex++], done: false&#125;，这个东西只是一个值，你需要赋值操作或者return出来。赋值没意义， 要把这个值给renturn出来，不然虽然你处理了这个值，但不return的话，外面取不到这个值，也没啥用。</span></span><br><span class="line"><span class="comment">//此处用var it = makeIterator(['a', 'b']);是因为，需要把这个返回的数据结构赋值给一个变量。不然你直接this. makeIterator(['a', 'b']);虽然语法不会报错，但没有意义，的确生成了一个数据结构，但你没有把他赋值给任何变量，从而你访问不到这个数据结构。</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="return的区分"><a href="#return的区分" class="headerlink" title="return的区分"></a>return的区分</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> index &lt;(x.length)? &#123;<span class="attr">value</span>:x[index++],<span class="attr">done</span>:<span class="literal">false</span>&#125;:&#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125; <span class="comment">//正确</span></span><br><span class="line"><span class="keyword">return</span>&#123;index &lt;(x.length)? &#123;<span class="attr">value</span>:x[index++],<span class="attr">done</span>:<span class="literal">false</span>&#125;:&#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;&#125;<span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
-
-<p>return 一个值，比如return 0;</p>
-<p>return一个对象 ，比如vue中的data，return{x:1,y:2};</p>
-<p>此处明显是return一个已经有括号的对象出来，就不要加括号了，此处的括号不是代码块的意思，也不能在外面包一个括号表示代码块，因为return后面肯定是跟一个值的，就不会是语句，所以不要用代码块{}，尽管代码不会报错，但某些检查工具会提示错误，这样写也没意义。</p>
-<h6 id="函数传递参数"><a href="#函数传递参数" class="headerlink" title="函数传递参数"></a>函数传递参数</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeGenerator</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> index =<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        next()&#123;</span><br><span class="line">            <span class="keyword">return</span> index &lt;(x.length)? &#123;<span class="attr">value</span>:x[index++],<span class="attr">done</span>:<span class="literal">false</span>&#125;:         &#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//next里的x用的是makeGenerator（x）传进来的x</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeGenerator</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> index =<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        next(x)&#123;</span><br><span class="line">            <span class="keyword">return</span> index &lt;(x.length)? &#123;<span class="attr">value</span>:x[index++],<span class="attr">done</span>:<span class="literal">false</span>&#125;:&#123;<span class="attr">value</span>:<span class="literal">undefined</span>,<span class="attr">done</span>:<span class="literal">true</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a= makeGenerator(x);</span><br><span class="line">a.next(x);</span><br><span class="line"><span class="comment">//此处 makeGenerator(x)传进去的x并没有使用，next里面的x,是在调用next方法时传禁区的x（优先匹配上一级）</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="index-与-index"><a href="#index-与-index" class="headerlink" title="index++ 与++index"></a>index++ 与++index</h6><p>通用的一种数据结构处理的写法，算是表达式的一种，会改变Index的值。前者先用，用完再加。后者先加，加完再用。此处这么写可以简化少写一句index+=1;</p>
-<h6 id="index-1"><a href="#index-1" class="headerlink" title="index+=1"></a>index+=1</h6><p>此处补充一点c语言/java中的小数计算。</p>
-<p>JS中，当他们都是Number都为整数的时候，a=a+1与a+=1是一样的。(String也会被转换Number)</p>
-<p>但在java/c中，两者不一定相等。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java中</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       <span class="keyword">short</span> a=<span class="number">1</span>;</span><br><span class="line">       a+=<span class="number">1</span>;   <span class="comment">//a=2</span></span><br><span class="line">       <span class="keyword">short</span> b=<span class="number">1</span>;</span><br><span class="line">       b=b+<span class="number">1</span>;  <span class="comment">//报错，因为b是short,1是init</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c中</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">2</span>;</span><br><span class="line">a += <span class="number">1.2</span>;    <span class="comment">// 不报错，最终 a = 3</span></span><br><span class="line">a = a + <span class="number">1.2</span>; <span class="comment">// 报错，a是init,1.2不是init</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/20/语句、表达式、return/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'c38df660ef9628c41489',
-  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
-  	repo: 'mycoments',
-  	owner: 'clark-cui',
-  	admin: ['clark-cui'],
-  	id: '',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
-
-  
-    <article id="post-浏览器考点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/浏览器考点/">浏览器考点</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/浏览器考点/" class="archive-article-date">
-  	<time datetime="2019-04-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="浏览器考点"><a href="#浏览器考点" class="headerlink" title="浏览器考点"></a>浏览器考点</h1><blockquote>
-<p>前言，此文搬运自网上博客，由于数目较多就不列举了。单独把这一块列出来，是希望自己能在此基础上能有所补充。</p>
-</blockquote>
-<h3 id="1-加载页面和渲染过程"><a href="#1-加载页面和渲染过程" class="headerlink" title="1.加载页面和渲染过程"></a>1.加载页面和渲染过程</h3><blockquote>
-<p>题目：浏览器从加载页面到渲染页面的过程。</p>
-</blockquote>
-<h5 id="加载过程"><a href="#加载过程" class="headerlink" title="加载过程"></a>加载过程</h5><p>要点如下：</p>
-<ol>
-<li><code>DNS</code>服务器解析域名的<code>IP</code>地址</li>
-<li>建立<code>TCP</code>握手连接</li>
-<li>向<code>IP</code>指向的服务器发送<code>HTTP</code>请求</li>
-<li>服务器收到、处理并返回<code>HTTP</code>请求</li>
-<li>浏览器获取返回内容</li>
-</ol>
-<h5 id="渲染过程"><a href="#渲染过程" class="headerlink" title="渲染过程"></a>渲染过程</h5><p>要点如下：</p>
-<ol>
-<li>根据<code>HTML</code>代码生成<code>DOM</code>树</li>
-<li>根据<code>CSS</code>生成<code>CSSDOM</code></li>
-<li>将 DOM 树和 CSSOM 整合成 RenderTree</li>
-<li>根据 RenderTree 开始渲染和展示</li>
-<li>遇到<code>&lt;script&gt;</code>，会阻塞渲染</li>
-</ol>
-<p>这个过程要注意<code>&lt;link&gt;</code>标签位置，以及<code>&lt;script&gt;</code>标签位置和<code>HTML</code>提供的<code>async</code> <code>defer</code>属性</p>
-<h3 id="2-渲染线程和-JS-引擎线程"><a href="#2-渲染线程和-JS-引擎线程" class="headerlink" title="2.渲染线程和 JS 引擎线程"></a>2.渲染线程和 JS 引擎线程</h3><p>浏览器中常见的线程有：渲染线程、JS 引擎线程、HTTP 线程等等。</p>
-<p>例如，当我们打开一个 Ajax 请求的时候，就启动了一个 HTTP 线程。</p>
-<p>同样地，我们可以用线程的只是解释：<strong>为什么直接操作 DOM 会变慢，性能损耗更大？因为 JS 引擎线程和渲染线程是互斥的</strong>。而直接操作 DOM 就会涉及到两个线程互斥之间的通信，所以开销更大。</p>
-<p>除此之外，这还能解释为什么<code>&lt;script&gt;</code>标签为什么会阻塞 DOM 树渲染，毕竟 JS 是可以修改 DOM 的，<strong>如果 JS 执行的时候 UI 也工作，就有可能导致不安全的渲染</strong>。</p>
-<h3 id="3-重绘和回流"><a href="#3-重绘和回流" class="headerlink" title="3. 重绘和回流"></a>3. 重绘和回流</h3><p>重绘（repaint）和回流（reflow）会在样式节点变动时候出现，回流所需要的成本更高，回流一定会引重绘。</p>
-<p>重绘是只一些元素更新属性，这些属性只影响外观，不影响布局。比如背景颜色、字体颜色等等。</p>
-<p>回流是元素的尺寸、布局、可见等属性发生改变。会导致渲染树重新构造。比如窗口字体大小变化、样式表改动、元素内容（尤其是输入控件）、css 伪类激活、offsetWidth 等属性计算。</p>
-<h4 id="如何减少重绘回流？"><a href="#如何减少重绘回流？" class="headerlink" title="如何减少重绘回流？"></a>如何减少重绘回流？</h4><ul>
-<li>避免逐项更改样式。<strong>一次性更改style属性，或者直接定义class属性</strong></li>
-<li>避免直接插入<code>DOM</code>。<strong>在documentFragment上操作，然后再插入document中</strong></li>
-<li>避免循环读取<code>offsetWidth</code>等属性。<strong>循环外存取</strong></li>
-<li>避免复杂动画。<strong>利用绝对定位将其脱离文档流</strong></li>
-<li>避免<code>CSS</code>选择符层级太多。<strong>尽量平级类名，参考 scss 中的&amp;的用法</strong></li>
-<li>为频繁重绘或者回流的节点设置图层：<ul>
-<li><code>iframe</code>、<code>video</code> 等节点自动变为图层</li>
-<li>通过 3d 动画出发：<code>transform: translate3d(0, 0, 0)</code></li>
-</ul>
-</li>
-<li>提前通知浏览器：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/will-change" target="_blank" rel="noopener"><code>will-change</code> 属性</a></li>
-</ul>
-<h3 id="4-页面生命周期"><a href="#4-页面生命周期" class="headerlink" title="4.页面生命周期"></a>4.页面生命周期</h3><p><code>onload</code>和<code>DOMContentLoaded</code>触发的先后顺序是什么？</p>
-<p>页面声明周期的变化，会触发<code>document</code>上的<code>readystatechange</code>事件，用户可以通过<code>document.readyState</code>拿到当前的状态。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始时候的readyState</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.readyState);</span><br><span class="line"><span class="comment">// 每次改变都打印readyState</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"readystatechange"</span>, () =&gt;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">document</span>.readyState);</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码在 Chrome 中的输出是：</p>
-<ol>
-<li>loading：加载 document</li>
-<li>interactive：document 加载成功，DOM 树构建完成</li>
-<li>complete：图像，样式表和框架之类的子资源完成加载</li>
-</ol>
-<p><strong>所以，DOMContentLoaded是在onload前进行的</strong>。</p>
-<ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOMContentLoaded</span><br></pre></td></tr></table></figure>
-
-<p>事件在 DOM 树构建完毕后被触发，我们可以在这个阶段使用 js 去访问元素。</p>
-<ul>
-<li><code>async</code>和<code>defer</code>的脚本可能还没有执行。</li>
-<li>图片及其他资源文件可能还在下载中。</li>
-</ul>
-</li>
-<li><p><code>load</code>事件在页面所有资源被加载完毕后触发，通常我们不会用到这个事件，因为我们不需要等那么久。</p>
-</li>
-<li><p><code>beforeunload</code>在用户即将离开页面时触发，它返回一个字符串，浏览器会向用户展示并询问这个字符串以确定是否离开。</p>
-</li>
-<li><p><code>unload</code>在用户已经离开时触发，我们在这个阶段仅可以做一些没有延迟的操作，由于种种限制，很少被使用。</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"DOMContentLoaded"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"load"</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"load"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"beforeunload"</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"will unload"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">window.addEventListener("unload", () =&gt; &#123;</span></span><br><span class="line"><span class="comment">	console.log("unload");</span></span><br><span class="line"><span class="comment">&#125;);</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-property-和-attribute-区别"><a href="#5-property-和-attribute-区别" class="headerlink" title="5. property 和 attribute 区别"></a>5. property 和 attribute 区别</h2><p><strong>①property</strong></p>
-<p>指的是属性：DOM 节点本质是 JS 对象，因此 property 可以理解成 JS 对象上的属性。而 property 改变，就是直接改变 JS 对象的属性。</p>
-<p>比如<code>&lt;p&gt;</code>上有 style、className、nodeName 和 nodeType 等属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = $(<span class="string">"p"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p.style.width, p.className);</span><br><span class="line"><span class="built_in">console</span>.log(p.nodeName, p.nodeType);</span><br></pre></td></tr></table></figure>
-
-<p><strong>②attribute</strong></p>
-<p>attribute 是指 HTML 的属性，<strong>改变 attribute 就是针对 HTML 属性的 set 和 get</strong>，和 JS 对象无关。</p>
-<p>常用的 API 就是：<code>getAttribute</code>和<code>setAttribute</code>。常见的用法是<code>setAttribute()</code>来设置元素的<code>style</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = $(<span class="string">"p"</span>);</span><br><span class="line">p.setAttribute(<span class="string">"data-name"</span>, <span class="string">"yuanxin"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p.getAttribute(<span class="string">"data-name"</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-cookie、localStorage-以及-sessionStorage"><a href="#6-cookie、localStorage-以及-sessionStorage" class="headerlink" title="6. cookie、localStorage 以及 sessionStorage"></a>6. cookie、localStorage 以及 sessionStorage</h2><p><strong>cookie</strong>：</p>
-<ul>
-<li>大小限制为 4kb，主要用来保存登陆信息，一般会存储一段表示用户信息的数据。</li>
-<li>生命周期上，一般是服务器设置失效时间；如果是浏览器生成，默认是关闭浏览器后失效。</li>
-<li>每次会被携带在 http 头中，所以数据量过大的时候有性能问题。</li>
-</ul>
-<p><strong>localStorage</strong>：大小限制为 5MB，用于永久存储信息，也可以用于缓存 ajax 信息用于离线应用。它保存在浏览器，不参与与服务器的通信。</p>
-<p><strong>sessionStorage</strong>：与 localStorage 类似，不同的是信息不是永久存储，仅在当前会话下有效。关闭标签或者浏览器，都会清除。</p>
-<h2 id="7-AJAX"><a href="#7-AJAX" class="headerlink" title="7. AJAX"></a>7. AJAX</h2><h3 id="7-1-XMLHttpRequest"><a href="#7-1-XMLHttpRequest" class="headerlink" title="7.1 XMLHttpRequest"></a>7.1 XMLHttpRequest</h3><blockquote>
-<p>题目：不借助任何库实现<code>XMLHttpRequest</code></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="comment">// readyState 为 4 和 status 为 200 的时候，是正常情况</span></span><br><span class="line"><span class="comment">// Step1: 监听状态</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">    xhr.status === <span class="number">200</span> &amp;&amp; <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// xhr.open(method: [get, post], url: string, async: [true, false])</span></span><br><span class="line"><span class="comment">// async: 默认是 true; 代表异步请求</span></span><br><span class="line"><span class="comment">// 如果async = false, 那么 xhr.send() 会阻塞</span></span><br><span class="line"><span class="comment">// Step2: 打开请求</span></span><br><span class="line">xhr.open(</span><br><span class="line">  <span class="string">"GET"</span>,</span><br><span class="line">  <span class="string">"http://localhost:5050/search/song?key=周杰伦&amp;page=1&amp;limit=10&amp;vendor=qq"</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// Step3: 发送请求</span></span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-2-Fetch-API"><a href="#7-2-Fetch-API" class="headerlink" title="7.2 Fetch API"></a>7.2 Fetch API</h3><blockquote>
-<p>题目：介绍和使用<code>fetch()</code></p>
-</blockquote>
-<p>淘汰了写法不舒服的<code>XMLHttpRequest</code>，本身支持<code>Promise</code>回调，是 ES6 下的最佳 AJAX 实践。但是浏览器兼容不是太好，但几年后，估计就只剩它了！</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="string">"http://localhost:5050/search/song"</span>;</span><br><span class="line"><span class="keyword">const</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">formData.append(<span class="string">"key"</span>, <span class="string">"周杰伦"</span>);</span><br><span class="line">formData.append(<span class="string">"page"</span>, <span class="number">1</span>);</span><br><span class="line">formData.append(<span class="string">"limit"</span>, <span class="number">10</span>);</span><br><span class="line">formData.append(<span class="string">"vendor"</span>, <span class="string">"qq"</span>);</span><br><span class="line">fetch(api, &#123;</span><br><span class="line">  method: <span class="string">"POST"</span>,</span><br><span class="line">  body: formData</span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</span><br><span class="line">  .then(<span class="function"><span class="params">json</span> =&gt;</span> <span class="built_in">console</span>.log(json));</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>：<code>koabodyparser</code>不支持<code>FormData</code>解析（换用<code>koa-better-body</code>）。那么请用如下代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="string">"http://localhost:5050/search/song"</span>;</span><br><span class="line">fetch(api, &#123;</span><br><span class="line">  method: <span class="string">"POST"</span>,</span><br><span class="line">  body: <span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">    key: <span class="string">"周杰伦"</span>,</span><br><span class="line">    page: <span class="number">1</span>,</span><br><span class="line">    limit: <span class="number">10</span>,</span><br><span class="line">    vendor: <span class="string">"qq"</span></span><br><span class="line">  &#125;),</span><br><span class="line">  headers: <span class="keyword">new</span> Headers(&#123;</span><br><span class="line">    <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</span><br><span class="line">  .then(<span class="function"><span class="params">json</span> =&gt;</span> <span class="built_in">console</span>.log(json));</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-3-实现跨域"><a href="#7-3-实现跨域" class="headerlink" title="7.3 实现跨域"></a>7.3 实现跨域</h3><blockquote>
-<p>题目：如何实现跨域？</p>
-</blockquote>
-<p>目前我已知的方法有三个：</p>
-<ul>
-<li>JSONP：通过<code>&lt;script&gt;</code>标签实现，但是只能实现<code>GET</code>请求</li>
-<li>代理转发：Webpack 的 dev 模式，配合<code>proxy</code>选项，<strong>启动一个前端服务器</strong>，实现代理转发</li>
-<li><strong>CORS</strong>：后端允许跨域资源共享，这是我最推荐的一种方法</li>
-</ul>
-<p>这里实现一下 JSONP。</p>
-<p><strong>注意</strong>：<code>src</code>的<code>params</code>中<code>callback</code>属性，指定的是回调函数。实例的回调函数是：<code>handleResponse()</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义回调函数</span></span><br><span class="line"><span class="keyword">const</span> handleResponse = <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造 &lt;script&gt; 标签</span></span><br><span class="line"><span class="keyword">let</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">script.src =</span><br><span class="line">  <span class="string">"https://api.douban.com/v2/book/search?q=javascript&amp;count=1&amp;callback=handleResponse"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向document中添加 &lt;script&gt; 标签，并且发送GET请求</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(script);</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">浏览器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/浏览器考点/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'c38df660ef9628c41489',
-  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
-  	repo: 'mycoments',
-  	owner: 'clark-cui',
-  	admin: ['clark-cui'],
-  	id: '',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
-
-  
     <article id="post-NPM自用整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -674,6 +300,105 @@ gitalk.render('gitalk-container')
   
 
   
+    <article id="post-java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/13/java/">java笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/13/java/" class="archive-article-date">
+  	<time datetime="2019-03-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="java"><a href="#java" class="headerlink" title="java"></a>java</h1><ul>
+<li><h4 id="java环境的配置"><a href="#java环境的配置" class="headerlink" title="java环境的配置"></a>java环境的配置</h4><p> java8之前，安装的时候，jdk的路径要和jre的区分开，不然会造成覆盖 java9之后，引入了一种新的Java编程组件，也就是模块，按照Oracle的说法，它是一个可命名的、自描述的代码和数据集合。模块技术的核心目标是减少Java应用和Java核心运行时环境的大小与复杂性。为此，JDK本身进行了模块化，Oracle希望通过这种方式提升性能、安全性和可维护性。    为了支持Java 9的模块，引入一种新的模块化JAR文件形式，按照这种形式会在其根目录中包含一个module-info.class文件。Oracle同时提供了工具，允许我们组合和优化一组模块，形成自定义的运行时镜像（image），这样的镜像不必将整个Java运行时包含进来。模块化所带来的其他变化包括从Java运行时镜像中移除了rt.jar和tools.jar。 更新后，版本带来的变化，模块化后导致不需要或者说将toos.jar和dt.jar文件兼容到其他部分，jdk的lib下面不会再出现这俩文件；也就是说装jdk-9.0.4版本时，配置环境变量时不需要配置classpath变量；    java12只需要配置path变量即可，按照官方文档就ok </p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/13/java/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'c38df660ef9628c41489',
+  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
+  	repo: 'mycoments',
+  	owner: 'clark-cui',
+  	admin: ['clark-cui'],
+  	id: '',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
+
+  
     <article id="post-css" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -765,105 +490,6 @@ gitalk.render('gitalk-container')
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/13/css/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'c38df660ef9628c41489',
-  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
-  	repo: 'mycoments',
-  	owner: 'clark-cui',
-  	admin: ['clark-cui'],
-  	id: '',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
-
-  
-    <article id="post-java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/java/">java笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/13/java/" class="archive-article-date">
-  	<time datetime="2019-03-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="java"><a href="#java" class="headerlink" title="java"></a>java</h1><ul>
-<li><h4 id="java环境的配置"><a href="#java环境的配置" class="headerlink" title="java环境的配置"></a>java环境的配置</h4><p> java8之前，安装的时候，jdk的路径要和jre的区分开，不然会造成覆盖 java9之后，引入了一种新的Java编程组件，也就是模块，按照Oracle的说法，它是一个可命名的、自描述的代码和数据集合。模块技术的核心目标是减少Java应用和Java核心运行时环境的大小与复杂性。为此，JDK本身进行了模块化，Oracle希望通过这种方式提升性能、安全性和可维护性。    为了支持Java 9的模块，引入一种新的模块化JAR文件形式，按照这种形式会在其根目录中包含一个module-info.class文件。Oracle同时提供了工具，允许我们组合和优化一组模块，形成自定义的运行时镜像（image），这样的镜像不必将整个Java运行时包含进来。模块化所带来的其他变化包括从Java运行时镜像中移除了rt.jar和tools.jar。 更新后，版本带来的变化，模块化后导致不需要或者说将toos.jar和dt.jar文件兼容到其他部分，jdk的lib下面不会再出现这俩文件；也就是说装jdk-9.0.4版本时，配置环境变量时不需要配置classpath变量；    java12只需要配置path变量即可，按照官方文档就ok </p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/13/java/">展开全文 >></a>
         </p>
       
 
@@ -1127,7 +753,7 @@ gitalk.render('gitalk-container')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 崔镕川
+    		&copy; 2020 崔镕川
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1202,15 +828,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1218,7 +836,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1226,15 +848,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1242,11 +864,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1255,10 +885,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
               </li>
              
               <li class="article-tag-list-item">
