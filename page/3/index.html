@@ -139,93 +139,74 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-NPM自用整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-css" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/22/NPM自用整理/">NPM自用整理</a>
+      <a class="article-title" href="/2019/03/13/css/">css笔记</a>
     </h1>
   
 
         
-        <a href="/2019/03/22/NPM自用整理/" class="archive-article-date">
-  	<time datetime="2019-03-22T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
+        <a href="/2019/03/13/css/" class="archive-article-date">
+  	<time datetime="2019-03-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="NPM自用整理"><a href="#NPM自用整理" class="headerlink" title="NPM自用整理"></a>NPM自用整理</h1><p>设置淘宝源</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
+        <h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><ul>
+<li><h4 id="盒子超出问题"><a href="#盒子超出问题" class="headerlink" title="盒子超出问题"></a>盒子超出问题</h4></li>
+</ul>
+<p> 出现盒子超出，要不就box-sizing:border-box; 不行就再把margin换成padding 或者留着margin width 100%改为auto 即可。 或者用margin 然后把height减去margin。 或者用padding border-box,然后height加上padding。 </p>
+<ul>
+<li><h4 id="在html中style里写有连接符的属性用驼峰转译"><a href="#在html中style里写有连接符的属性用驼峰转译" class="headerlink" title="在html中style里写有连接符的属性用驼峰转译"></a>在html中style里写有连接符的属性用驼峰转译</h4></li>
+</ul>
+<ul>
+<li><h4 id="去掉ios横向滚动条"><a href="#去掉ios横向滚动条" class="headerlink" title="去掉ios横向滚动条"></a>去掉ios横向滚动条</h4><p> 3级dom.</p>
+<p>第一级overflowhidden,</p>
+<p>第二级overflow-x:scroll,y:hidden，并加padding-bottom。</p>
+<p>第三级里面放循环元素，宽度max-content.</p>
+</li>
+<li><h4 id="权重问题"><a href="#权重问题" class="headerlink" title="权重问题"></a>权重问题</h4><p> 同时设置属性无效，是因为伪类得权重没有正常得权重大（当只有1个元素时，伪类失效，就是nth-child(1)失效）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">p&#123;</span><br><span class="line">     font-size: px(<span class="number">28</span>);</span><br><span class="line">     color: #666666;</span><br><span class="line">     text-align: left;</span><br><span class="line">     padding: px(<span class="number">10</span>) px(<span class="number">40</span>) <span class="number">0</span> px(<span class="number">40</span>);</span><br><span class="line">     margin: <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> p:first-child&#123;</span><br><span class="line">     padding: px(<span class="number">30</span>) px(<span class="number">40</span>) <span class="number">0</span> px(<span class="number">40</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://www.npmjs.cn/" target="_blank" rel="noopener">npm中文文档</a></p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>npm init</code></td>
-<td>初始化 生成package.json</td>
-</tr>
-<tr>
-<td><code>ctrl +c</code></td>
-<td>撤销</td>
-</tr>
-<tr>
-<td><code>npm i</code></td>
-<td>下载依赖</td>
-</tr>
-<tr>
-<td><code>npm i --save</code></td>
-<td>下载依赖并存到生产依赖中</td>
-</tr>
-<tr>
-<td><code>npm i --save dev</code></td>
-<td>下载依赖并存到开发依赖中</td>
-</tr>
-<tr>
-<td><code>npm uninstall -g</code></td>
-<td>全局删除包</td>
-</tr>
-<tr>
-<td><code>npm uninstall</code></td>
-<td>删除包</td>
-</tr>
-<tr>
-<td><code>npm uninstall --save</code></td>
-<td>生产依赖卸载包</td>
-</tr>
-<tr>
-<td><code>npm uninstall --save dev</code></td>
-<td>开发依赖卸载包</td>
-</tr>
-<tr>
-<td><code>npm undate</code></td>
-<td>更新包</td>
-</tr>
-<tr>
-<td><code>npm outdated</code></td>
-<td>是否有包过期</td>
-</tr>
-</tbody></table>
-<p>升级Npm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install npm@latest -g</span><br></pre></td></tr></table></figure>
 
-<p>升级包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update -g</span><br></pre></td></tr></table></figure>
 
-<p>升级了Node后，老项目需要重构node-sass</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm rebuild node-sass</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><h4 id="p标签自带margin"><a href="#p标签自带margin" class="headerlink" title="p标签自带margin"></a>p标签自带margin</h4><p>用通配符消除</p>
+</li>
+<li><h4 id="透明度"><a href="#透明度" class="headerlink" title="透明度"></a>透明度</h4><p> background-color 设置透明度</p>
+<p> 方法一：</p>
+<p> opacity: 0.1; </p>
+<p>background: #FFFFFF; </p>
+<p> opacity会让子元素带上同样的透明度</p>
+<p>方法二（推荐）  </p>
+<p> background-color: rgba(255,255,255,0.1);   </p>
+<p>这种方式只会设置该元素背景透明度，不会影响到子元素。 </p>
+</li>
+<li><h4 id="吸顶"><a href="#吸顶" class="headerlink" title="吸顶"></a>吸顶</h4><p> 避免使用fixed </p>
+<p>方法一：首先让不动的div 和要动的div竖直排列，flex-direction:column; 设置需要滚动栏：overflow:scroll； 设置不动栏：positon:absolute，滚动时和下文会重叠。不设则不会重叠。需要三级dom </p>
+</li>
+</ul>
+<p>  方法二（推荐）：flex grow:1,overflow:scroll. 需要二级dom</p>
+<ul>
+<li><h4 id="组件样式"><a href="#组件样式" class="headerlink" title="组件样式"></a>组件样式</h4><p>/deep/</p>
+<p>!important</p>
+</li>
+<li><h4 id="图片属性"><a href="#图片属性" class="headerlink" title="图片属性"></a>图片属性</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">object-fit</span></span><br></pre></td></tr></table></figure>
 
-<p><code>npm i</code> 报错的时候，有可能是npm缓存机制问题。执行下列命令删除缓存，重置淘宝源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean –force</span><br><span class="line">npm install –registry=https://registry.npm.taobao.org</span><br><span class="line">npm install -g </span><br><span class="line">cnpm –registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+
       
 
       
@@ -238,7 +219,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">npm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
         		</li>
       		
 		</ul>
@@ -248,7 +229,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/22/NPM自用整理/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/13/css/">展开全文 >></a>
         </p>
       
 
@@ -348,148 +329,6 @@ gitalk.render('gitalk-container')
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/03/13/java/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'c38df660ef9628c41489',
-  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
-  	repo: 'mycoments',
-  	owner: 'clark-cui',
-  	admin: ['clark-cui'],
-  	id: '',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
-
-  
-    <article id="post-css" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/css/">css笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/13/css/" class="archive-article-date">
-  	<time datetime="2019-03-13T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><ul>
-<li><h4 id="盒子超出问题"><a href="#盒子超出问题" class="headerlink" title="盒子超出问题"></a>盒子超出问题</h4></li>
-</ul>
-<p> 出现盒子超出，要不就box-sizing:border-box; 不行就再把margin换成padding 或者留着margin width 100%改为auto 即可。 或者用margin 然后把height减去margin。 或者用padding border-box,然后height加上padding。 </p>
-<ul>
-<li><h4 id="在html中style里写有连接符的属性用驼峰转译"><a href="#在html中style里写有连接符的属性用驼峰转译" class="headerlink" title="在html中style里写有连接符的属性用驼峰转译"></a>在html中style里写有连接符的属性用驼峰转译</h4></li>
-</ul>
-<ul>
-<li><h4 id="去掉ios横向滚动条"><a href="#去掉ios横向滚动条" class="headerlink" title="去掉ios横向滚动条"></a>去掉ios横向滚动条</h4><p> 3级dom.</p>
-<p>第一级overflowhidden,</p>
-<p>第二级overflow-x:scroll,y:hidden，并加padding-bottom。</p>
-<p>第三级里面放循环元素，宽度max-content.</p>
-</li>
-<li><h4 id="权重问题"><a href="#权重问题" class="headerlink" title="权重问题"></a>权重问题</h4><p> 同时设置属性无效，是因为伪类得权重没有正常得权重大（当只有1个元素时，伪类失效，就是nth-child(1)失效）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">p&#123;</span><br><span class="line">     font-size: px(<span class="number">28</span>);</span><br><span class="line">     color: #666666;</span><br><span class="line">     text-align: left;</span><br><span class="line">     padding: px(<span class="number">10</span>) px(<span class="number">40</span>) <span class="number">0</span> px(<span class="number">40</span>);</span><br><span class="line">     margin: <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> p:first-child&#123;</span><br><span class="line">     padding: px(<span class="number">30</span>) px(<span class="number">40</span>) <span class="number">0</span> px(<span class="number">40</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><h4 id="p标签自带margin"><a href="#p标签自带margin" class="headerlink" title="p标签自带margin"></a>p标签自带margin</h4><p>用通配符消除</p>
-</li>
-<li><h4 id="透明度"><a href="#透明度" class="headerlink" title="透明度"></a>透明度</h4><p> background-color 设置透明度</p>
-<p> 方法一：</p>
-<p> opacity: 0.1; </p>
-<p>background: #FFFFFF; </p>
-<p> opacity会让子元素带上同样的透明度</p>
-<p>方法二（推荐）  </p>
-<p> background-color: rgba(255,255,255,0.1);   </p>
-<p>这种方式只会设置该元素背景透明度，不会影响到子元素。 </p>
-</li>
-<li><h4 id="吸顶"><a href="#吸顶" class="headerlink" title="吸顶"></a>吸顶</h4><p> 避免使用fixed </p>
-<p>方法一：首先让不动的div 和要动的div竖直排列，flex-direction:column; 设置需要滚动栏：overflow:scroll； 设置不动栏：positon:absolute，滚动时和下文会重叠。不设则不会重叠。需要三级dom </p>
-</li>
-</ul>
-<p>  方法二（推荐）：flex grow:1,overflow:scroll. 需要二级dom</p>
-<ul>
-<li><h4 id="组件样式"><a href="#组件样式" class="headerlink" title="组件样式"></a>组件样式</h4><p>/deep/</p>
-<p>!important</p>
-</li>
-<li><h4 id="图片属性"><a href="#图片属性" class="headerlink" title="图片属性"></a>图片属性</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">object-fit</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/13/css/">展开全文 >></a>
         </p>
       
 
@@ -828,15 +667,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -844,15 +675,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -860,11 +683,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -872,7 +695,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -885,6 +720,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
               </li>
              
               <li class="article-tag-list-item">

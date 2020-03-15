@@ -139,18 +139,63 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-VUE环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Vue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/01/Vue/">Vue笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/01/Vue/" class="archive-article-date">
+  	<time datetime="2019-11-01T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="VUE环境搭建"><a href="#VUE环境搭建" class="headerlink" title="VUE环境搭建"></a>VUE环境搭建</h1><p>官网的 vue create 和vue ui都不会有webpack</p>
-<p>解决办法: </p>
-<p>在项目的根目录下新建 vue.config.js 文件</p>
-<p>具体配置见官方文档: <a href="https://cli.vuejs.org/zh/config/#vue-config-js" target="_blank" rel="noopener">https://cli.vuejs.org/zh/config/#vue-config-js</a></p>
-<p>或者通过 npm install -g @vue/cli-init</p>
-<p>使用 vue init webpack project-name</p>
-<p>这种方式初始化项目</p>
+        <h3 id="虚拟dom"><a href="#虚拟dom" class="headerlink" title="虚拟dom"></a>虚拟dom</h3><blockquote>
+<p>就是一个属性描述的Js对象</p>
+</blockquote>
+<p><a href="https://juejin.im/post/5d31c6c35188252d1d5f9c98" target="_blank" rel="noopener">virtual Dom</a></p>
+<p><a href="https://juejin.im/post/5d36cc575188257aea108a74" target="_blank" rel="noopener">virtual Dom</a></p>
+<h5 id="笔记（待补充，这一部分涉及到源码，很多没看懂，等下次突击完再补充）"><a href="#笔记（待补充，这一部分涉及到源码，很多没看懂，等下次突击完再补充）" class="headerlink" title="笔记（待补充，这一部分涉及到源码，很多没看懂，等下次突击完再补充）"></a>笔记（待补充，这一部分涉及到源码，很多没看懂，等下次突击完再补充）</h5><p>vue中的virtual Dom就是VNode。Vue中调用creatElement方法生成VNode,数据更新触发update方法视图更新，update方法中调用了path函数，patch函数用diff算法，比较新Vnode与旧的VNode，之后再生成dom。</p>
+<blockquote>
+<p>原本没有虚拟dom的情况下，对比dom极其困难，最好的做法是重新生成一棵树来进行替换，但这样做性能极差，尤其是dom节点过多的情况下。为了解决这个问题，在dom上方放了层只含有部分必要信息的虚拟dom。当发生变动时，可精确匹配需要更新的dom、attributes、event listener…，然后再精确的更新到真实dom上，减少受影响的dom。但既然有了虚拟层，自然就有了跨平台的副产物，比如像RN。</p>
+<p>但事实上，虚拟dom并非那么高效。尤其是dom节点足够小的情况下、或者确实需要整个替换的情况下，直接生成一棵树比diff后再生成要明显高效很多。但虚拟dom的好处是提供了多数场景下的一种通用处理方法。</p>
+</blockquote>
+<h3 id="watch中this的指向"><a href="#watch中this的指向" class="headerlink" title="watch中this的指向"></a>watch中this的指向</h3><p> vue的watch中如果用箭头函数写回调，所以this会取上下文，而不是组件里面的this了，故需要用普通函数。</p>
+<p>同理不能在methods用箭头写方法</p>
+<h4 id="用vuex进行状态管理"><a href="#用vuex进行状态管理" class="headerlink" title="用vuex进行状态管理"></a>用vuex进行状态管理</h4><p>避免使用路由。路由仅支持单页面传值，当2个以上页面回退在进入就会丢失参数。</p>
+<h4 id="mounted-activated"><a href="#mounted-activated" class="headerlink" title="mounted activated"></a>mounted activated</h4><p> 调用接口写在mounted，activated仅仅放回退时需要重新刷新的内容，比如设置标题。 </p>
+<h4 id="deactivated-destroyed"><a href="#deactivated-destroyed" class="headerlink" title="deactivated destroyed"></a>deactivated destroyed</h4><p>加了router-view的单页面组件可以用activated与destroyed钩子，deactivated与destroyed都是页面销毁，执行那个自己看。</p>
+<h4 id="data中的"><a href="#data中的" class="headerlink" title="data中的 ||"></a>data中的 ||</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time:<span class="keyword">this</span>.$store.state.time||time()</span><br></pre></td></tr></table></figure>
+
+<p>  如果缓存了time就用time,否则就调用time方法，time()是export function。 </p>
+<h4 id="用三元代替if-else"><a href="#用三元代替if-else" class="headerlink" title="用三元代替if else"></a>用三元代替if else</h4><h4 id="用if-return-代替无交集处理的if-else"><a href="#用if-return-代替无交集处理的if-else" class="headerlink" title="用if return 代替无交集处理的if else"></a>用if return 代替无交集处理的if else</h4><h4 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h4><p> 方式一： :class=”has ? ‘bg’:’bgNone’”  :class=”index === lists.length-1 ? ‘cardLast’: ‘card’”  （注意外面双引号，内部单引号）</p>
+<p> 方式二： :class=”{timeItem:a.status,noTime:!a.status}” 这是官方示例的写法 </p>
+<p>方式三： :class=”[isActive ? activeClass : ‘’, errorClass]” 数组的写法，第二项为固定class </p>
+<h4 id="点击变色"><a href="#点击变色" class="headerlink" title="点击变色"></a>点击变色</h4><p>方式一（自用）：</p>
+<p>点击时候触发方法传递Index，在方法中改变某个变量的值。该变量决定了这个dom的class，通过切换class实现变换。</p>
+<p>方式二（看到的，不好）:</p>
+<p>  :style=”{backgroundColor:click[index]? ‘white’:’#f8f8f8’}” </p>
+<p>此处的click是一个数组，index是这个dom的顺序，点击时候触发方法，在方法中添加该数组的Index项目为true</p>
+<h4 id="dom渲染完后的函数"><a href="#dom渲染完后的函数" class="headerlink" title="dom渲染完后的函数"></a>dom渲染完后的函数</h4><p> vue等待渲染完执行的函数 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$nextTick(<span class="function"><span class="keyword">function</span>(<span class="params">&#123;console.log(...</span>)&#125;))</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="不能直接改变prop"><a href="#不能直接改变prop" class="headerlink" title="不能直接改变prop"></a>不能直接改变prop</h4><blockquote>
+<p>[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “indexE” </p>
+</blockquote>
+<p>不能直接修改prop,应该emit在父组件中修改 </p>
+<h4 id="vue的v-html样式"><a href="#vue的v-html样式" class="headerlink" title="vue的v-html样式"></a>vue的v-html样式</h4><p> vue的v-html只能在里面写样式，在@import里的scss无效 </p>
+<h4 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h4><p> mounted表示渲染完执行，但是并不代表里面的异步操作也在渲染完的时候就执行完 </p>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;home&quot; ref=&quot;productionBox&quot;&gt;</span><br><span class="line">this.screenWidth = this.$refs.productionBox.clientWidth;</span><br><span class="line"> this.screenHeight = this.$refs.productionBox.clientHeight;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -159,11 +204,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/27/VUE环境搭建/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/01/Vue/">展开全文 >></a>
         </p>
       
 
@@ -312,19 +368,19 @@ gitalk.render('gitalk-container')
   
 
   
-    <article id="post-Vue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vscode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/Vue/">Vue笔记</a>
+      <a class="article-title" href="/2019/11/01/vscode/">vscode笔记</a>
     </h1>
   
 
         
-        <a href="/2019/11/01/Vue/" class="archive-article-date">
+        <a href="/2019/11/01/vscode/" class="archive-article-date">
   	<time datetime="2019-11-01T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
 </a>
         
@@ -332,43 +388,7 @@ gitalk.render('gitalk-container')
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="虚拟dom"><a href="#虚拟dom" class="headerlink" title="虚拟dom"></a>虚拟dom</h3><blockquote>
-<p>就是一个属性描述的Js对象</p>
-</blockquote>
-<p><a href="https://juejin.im/post/5d31c6c35188252d1d5f9c98" target="_blank" rel="noopener">virtual Dom</a></p>
-<p><a href="https://juejin.im/post/5d36cc575188257aea108a74" target="_blank" rel="noopener">virtual Dom</a></p>
-<h5 id="笔记（待补充，这一部分涉及到源码，很多没看懂，等下次突击完再补充）"><a href="#笔记（待补充，这一部分涉及到源码，很多没看懂，等下次突击完再补充）" class="headerlink" title="笔记（待补充，这一部分涉及到源码，很多没看懂，等下次突击完再补充）"></a>笔记（待补充，这一部分涉及到源码，很多没看懂，等下次突击完再补充）</h5><p>vue中的virtual Dom就是VNode。Vue中调用creatElement方法生成VNode,数据更新触发update方法视图更新，update方法中调用了path函数，patch函数用diff算法，比较新Vnode与旧的VNode，之后再生成dom。</p>
-<blockquote>
-<p>原本没有虚拟dom的情况下，对比dom极其困难，最好的做法是重新生成一棵树来进行替换，但这样做性能极差，尤其是dom节点过多的情况下。为了解决这个问题，在dom上方放了层只含有部分必要信息的虚拟dom。当发生变动时，可精确匹配需要更新的dom、attributes、event listener…，然后再精确的更新到真实dom上，减少受影响的dom。但既然有了虚拟层，自然就有了跨平台的副产物，比如像RN。</p>
-<p>但事实上，虚拟dom并非那么高效。尤其是dom节点足够小的情况下、或者确实需要整个替换的情况下，直接生成一棵树比diff后再生成要明显高效很多。但虚拟dom的好处是提供了多数场景下的一种通用处理方法。</p>
-</blockquote>
-<h3 id="watch中this的指向"><a href="#watch中this的指向" class="headerlink" title="watch中this的指向"></a>watch中this的指向</h3><p> vue的watch中如果用箭头函数写回调，所以this会取上下文，而不是组件里面的this了，故需要用普通函数。</p>
-<p>同理不能在methods用箭头写方法</p>
-<h4 id="用vuex进行状态管理"><a href="#用vuex进行状态管理" class="headerlink" title="用vuex进行状态管理"></a>用vuex进行状态管理</h4><p>避免使用路由。路由仅支持单页面传值，当2个以上页面回退在进入就会丢失参数。</p>
-<h4 id="mounted-activated"><a href="#mounted-activated" class="headerlink" title="mounted activated"></a>mounted activated</h4><p> 调用接口写在mounted，activated仅仅放回退时需要重新刷新的内容，比如设置标题。 </p>
-<h4 id="deactivated-destroyed"><a href="#deactivated-destroyed" class="headerlink" title="deactivated destroyed"></a>deactivated destroyed</h4><p>加了router-view的单页面组件可以用activated与destroyed钩子，deactivated与destroyed都是页面销毁，执行那个自己看。</p>
-<h4 id="data中的"><a href="#data中的" class="headerlink" title="data中的 ||"></a>data中的 ||</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time:<span class="keyword">this</span>.$store.state.time||time()</span><br></pre></td></tr></table></figure>
-
-<p>  如果缓存了time就用time,否则就调用time方法，time()是export function。 </p>
-<h4 id="用三元代替if-else"><a href="#用三元代替if-else" class="headerlink" title="用三元代替if else"></a>用三元代替if else</h4><h4 id="用if-return-代替无交集处理的if-else"><a href="#用if-return-代替无交集处理的if-else" class="headerlink" title="用if return 代替无交集处理的if else"></a>用if return 代替无交集处理的if else</h4><h4 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h4><p> 方式一： :class=”has ? ‘bg’:’bgNone’”  :class=”index === lists.length-1 ? ‘cardLast’: ‘card’”  （注意外面双引号，内部单引号）</p>
-<p> 方式二： :class=”{timeItem:a.status,noTime:!a.status}” 这是官方示例的写法 </p>
-<p>方式三： :class=”[isActive ? activeClass : ‘’, errorClass]” 数组的写法，第二项为固定class </p>
-<h4 id="点击变色"><a href="#点击变色" class="headerlink" title="点击变色"></a>点击变色</h4><p>方式一（自用）：</p>
-<p>点击时候触发方法传递Index，在方法中改变某个变量的值。该变量决定了这个dom的class，通过切换class实现变换。</p>
-<p>方式二（看到的，不好）:</p>
-<p>  :style=”{backgroundColor:click[index]? ‘white’:’#f8f8f8’}” </p>
-<p>此处的click是一个数组，index是这个dom的顺序，点击时候触发方法，在方法中添加该数组的Index项目为true</p>
-<h4 id="dom渲染完后的函数"><a href="#dom渲染完后的函数" class="headerlink" title="dom渲染完后的函数"></a>dom渲染完后的函数</h4><p> vue等待渲染完执行的函数 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$nextTick(<span class="function"><span class="keyword">function</span>(<span class="params">&#123;console.log(...</span>)&#125;))</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="不能直接改变prop"><a href="#不能直接改变prop" class="headerlink" title="不能直接改变prop"></a>不能直接改变prop</h4><blockquote>
-<p>[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “indexE” </p>
-</blockquote>
-<p>不能直接修改prop,应该emit在父组件中修改 </p>
-<h4 id="vue的v-html样式"><a href="#vue的v-html样式" class="headerlink" title="vue的v-html样式"></a>vue的v-html样式</h4><p> vue的v-html只能在里面写样式，在@import里的scss无效 </p>
-<h4 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h4><p> mounted表示渲染完执行，但是并不代表里面的异步操作也在渲染完的时候就执行完 </p>
-<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;home&quot; ref=&quot;productionBox&quot;&gt;</span><br><span class="line">this.screenWidth = this.$refs.productionBox.clientWidth;</span><br><span class="line"> this.screenHeight = this.$refs.productionBox.clientHeight;</span><br></pre></td></tr></table></figure>
-
+        <h1 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h1><h4 id="打开新窗口"><a href="#打开新窗口" class="headerlink" title="打开新窗口"></a>打开新窗口</h4><p>ctrl shift n </p>
 
       
 
@@ -382,7 +402,7 @@ gitalk.render('gitalk-container')
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
         		</li>
       		
 		</ul>
@@ -392,7 +412,7 @@ gitalk.render('gitalk-container')
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/01/Vue/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/01/vscode/">展开全文 >></a>
         </p>
       
 
@@ -540,102 +560,6 @@ gitalk.render('gitalk-container')
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/11/01/博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-  	clientID: 'c38df660ef9628c41489',
-  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
-  	repo: 'mycoments',
-  	owner: 'clark-cui',
-  	admin: ['clark-cui'],
-  	id: '',
-  	distractionFreeMode: 'true'
-})
-gitalk.render('gitalk-container') 
-}
-</script>
-  
-
-  
-    <article id="post-vscode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/vscode/">vscode笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/01/vscode/" class="archive-article-date">
-  	<time datetime="2019-11-01T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h1><h4 id="打开新窗口"><a href="#打开新窗口" class="headerlink" title="打开新窗口"></a>打开新窗口</h4><p>ctrl shift n </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/01/vscode/">展开全文 >></a>
         </p>
       
 
@@ -1543,6 +1467,185 @@ gitalk.render('gitalk-container')
   
 
   
+    <article id="post-JS挖坑填坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/11/JS挖坑填坑/">JS挖坑填坑</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/11/JS挖坑填坑/" class="archive-article-date">
+  	<time datetime="2019-06-11T12:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JS挖坑填坑"><a href="#JS挖坑填坑" class="headerlink" title="JS挖坑填坑"></a>JS挖坑填坑</h1><h5 id="Dom事件流（冒泡）"><a href="#Dom事件流（冒泡）" class="headerlink" title="Dom事件流（冒泡）"></a>Dom事件流（冒泡）</h5><blockquote>
+<p>事件的3个阶段：捕获、目标、冒泡</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>捕获</th>
+<th>事件从根节点流向目标节点，在各个节点上触发捕获事件，直到达到目标节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目标</td>
+<td>事件到达目标节点时，就到了目标阶段，事件在目标节点上被触发</td>
+</tr>
+<tr>
+<td>冒泡</td>
+<td>事件在目标节点上触发后，不会终止，一层层向上冒，回溯到根节点</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p> 当我们在某个DOM节点绑定了某事件监听器，本来是想当该DOM节点触发事件，再执行回调函数。结果是该节点的某个子节点触发事件，由于事件冒泡，该DOM节点事件也会触发，执行了回调函数，这样就违背了最初的本意了。所以需要阻止冒泡。</p>
+</blockquote>
+<p><img src="../images/JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91/1562483050109.png" alt="1562483050109"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addEventListener(<span class="string">"eventName"</span>, doSomething, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 第三个Boolean参数为true时, 表示是否在捕获阶段调用事件处理程序（老版dom），新版dom中第三个参数未option，可选很多参数，详见MDN。</p>
+<h6 id="阻止冒泡"><a href="#阻止冒泡" class="headerlink" title="阻止冒泡"></a>阻止冒泡</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">e</span>) </span>&#123; </span><br><span class="line"><span class="comment">//如果提供了事件对象，则这是一个非IE浏览器 </span></span><br><span class="line"><span class="keyword">if</span> ( e &amp;&amp; e.stopPropagation ) </span><br><span class="line">    <span class="comment">//因此它支持W3C的stopPropagation()方法 </span></span><br><span class="line">    e.stopPropagation(); </span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="comment">//否则，我们需要使用IE的方式来取消事件冒泡 </span></span><br><span class="line">    <span class="built_in">window</span>.event.cancelBubble = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vue中有修饰符.stop</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//阻止浏览器的默认行为 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopDefault</span>(<span class="params"> e </span>) </span>&#123; </span><br><span class="line">    <span class="comment">//阻止默认浏览器动作(W3C) </span></span><br><span class="line">    <span class="keyword">if</span> ( e &amp;&amp; e.preventDefault ) </span><br><span class="line">        e.preventDefault(); </span><br><span class="line">    <span class="comment">//IE中阻止函数器默认动作的方式 </span></span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="built_in">window</span>.event.returnValue = <span class="literal">false</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><h6 id="ES5-原型链"><a href="#ES5-原型链" class="headerlink" title="ES5 原型链"></a>ES5 原型链</h6><p><a href="https://segmentfault.com/a/1190000011801127" target="_blank" rel="noopener">_proto与prototype</a></p>
+<p><a href="https://wangdoc.com/javascript/oop/prototype.html" target="_blank" rel="noopener">阮一峰</a></p>
+<p><img src="../images/JS%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91/22.png" alt="proto"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Game</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Game.prototype.color = <span class="string">'white'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> game1 = <span class="keyword">new</span> Game(<span class="string">'fly'</span>);</span><br><span class="line"><span class="keyword">var</span> game2 = <span class="keyword">new</span> Game(<span class="string">'mov'</span>);</span><br><span class="line"></span><br><span class="line">cat1.color <span class="comment">// 'white'</span></span><br><span class="line">cat2.color <span class="comment">// 'white'</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="ES6-class"><a href="#ES6-class" class="headerlink" title="ES6 class"></a>ES6 class</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="图片在手机跨域问题"><a href="#图片在手机跨域问题" class="headerlink" title="图片在手机跨域问题"></a>图片在手机跨域问题</h5><blockquote>
+<p>图片能正常显示，但用在高德的imagelayer接口作为参数传入时不行（用Import引入可以用，但调用接口获取url传入不行）。</p>
+</blockquote>
+<h6 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h6><p>用image对象，转换base64，并且在img对象中设置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">imgObj.crossOrigin=<span class="string">"anonymous"</span>;     <span class="comment">//允许跨域</span></span><br><span class="line">imgObj.src = imgUrl+ <span class="string">'?time='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();  <span class="comment">//为图片地址添加时间戳参数（添加别的参数好像也行）</span></span><br></pre></td></tr></table></figure>
+
+<p>完整代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> b64Img = <span class="keyword">await</span> getBase64Img(<span class="keyword">this</span>.mapUrl);</span><br><span class="line">            <span class="keyword">let</span> imageLayer = <span class="keyword">new</span> AMap.ImageLayer(&#123;</span><br><span class="line">                opacity: <span class="number">1</span>,</span><br><span class="line">                url: b64Img,</span><br><span class="line">                bounds: <span class="keyword">new</span> AMap.Bounds(</span><br><span class="line">                    [that.southWest.split(<span class="string">','</span>)[<span class="number">0</span>], that.southWest.split(<span class="string">','</span>)[<span class="number">1</span>]],</span><br><span class="line">                    [that.northEast.split(<span class="string">','</span>)[<span class="number">0</span>], that.northEast.split(<span class="string">','</span>)[<span class="number">1</span>]]</span><br><span class="line">                ),</span><br><span class="line">                zooms: [<span class="number">10</span>, <span class="number">13</span>] <span class="comment">// 设置可见级别，[最小级别，最大级别]</span></span><br><span class="line">            &#125;);</span><br><span class="line">            map.add(imageLayer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (imgUrl) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> imgObj = <span class="keyword">new</span> Image();</span><br><span class="line">        imgObj.crossOrigin=<span class="string">"anonymous"</span>;</span><br><span class="line">        imgObj.src = imgUrl+ <span class="string">'?time='</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();</span><br><span class="line">        imgObj.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">const</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">            canvas.width = imgObj.width;</span><br><span class="line">            canvas.height = imgObj.height;</span><br><span class="line">            <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">            ctx.drawImage(imgObj, <span class="number">0</span>, <span class="number">0</span>, imgObj.width, imgObj.height);</span><br><span class="line">            <span class="keyword">const</span> b64Str = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">            resolve(b64Str);</span><br><span class="line">        &#125;;</span><br><span class="line">        imgObj.onerror = <span class="function">(<span class="params">e</span>)=&gt;</span>&#123;</span><br><span class="line">            reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="防止重复点击"><a href="#防止重复点击" class="headerlink" title="防止重复点击"></a>防止重复点击</h5><blockquote>
+<p>起因：项目中，点击事件会触发调用接口。为了防止用户抽风狂点按钮导致的重复事件，定义一个全局变量来控制。</p>
+</blockquote>
+<h6 id="简单方法"><a href="#简单方法" class="headerlink" title="简单方法"></a>简单方法</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>. isCall=<span class="literal">true</span>;</span><br><span class="line"><span class="comment">//click function</span></span><br><span class="line">click()&#123;</span><br><span class="line"><span class="keyword">if</span>(!isCall)&#123;</span><br><span class="line"><span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">this</span>.isCall=<span class="literal">false</span>;</span><br><span class="line"><span class="keyword">this</span>.call();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//call function</span></span><br><span class="line">call()&#123;</span><br><span class="line">ajax.send();</span><br><span class="line"><span class="keyword">this</span>.isCall=<span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h6><blockquote>
+<p>防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// func是用户传入需要防抖的函数</span></span><br><span class="line"><span class="comment">// wait是等待时间</span></span><br><span class="line"><span class="keyword">const</span> debounce = <span class="function">(<span class="params">func, wait = <span class="number">50</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 缓存一个定时器id</span></span><br><span class="line">  <span class="keyword">let</span> timer = <span class="number">0</span></span><br><span class="line">  <span class="comment">// 这里返回的函数是每次用户实际调用的防抖函数</span></span><br><span class="line">  <span class="comment">// 如果已经设定过定时器了就清空上一次的定时器</span></span><br><span class="line">  <span class="comment">// 开始一个新的定时器，延迟执行用户传入的方法</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timer) clearTimeout(timer)</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      func.apply(<span class="keyword">this</span>, args)</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 不难看出如果用户调用该函数的间隔小于wait的情况下，上一次的时间还未到就被清除了，并不会执行函数</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个是用来获取当前时间戳的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">now</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 防抖函数，返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125; func        回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;   wait        表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;boolean&#125;  immediate   设置为ture时，是否立即调用函数</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">func, wait = <span class="number">50</span>, immediate = true</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer, context, args</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 延迟执行函数</span></span><br><span class="line">  <span class="keyword">const</span> later = <span class="function"><span class="params">()</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 延迟函数执行完毕，清空缓存的定时器序号</span></span><br><span class="line">    timer = <span class="literal">null</span></span><br><span class="line">    <span class="comment">// 延迟执行的情况下，函数会在延迟函数中执行</span></span><br><span class="line">    <span class="comment">// 使用到之前缓存的参数和上下文</span></span><br><span class="line">    <span class="keyword">if</span> (!immediate) &#123;</span><br><span class="line">      func.apply(context, args)</span><br><span class="line">      context = args = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, wait)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这里返回的函数是每次实际调用的函数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...params</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果没有创建延迟执行函数（later），就创建一个</span></span><br><span class="line">    <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">      timer = later()</span><br><span class="line">      <span class="comment">// 如果是立即执行，调用函数</span></span><br><span class="line">      <span class="comment">// 否则缓存参数和调用上下文</span></span><br><span class="line">      <span class="keyword">if</span> (immediate) &#123;</span><br><span class="line">        func.apply(<span class="keyword">this</span>, params)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        context = <span class="keyword">this</span></span><br><span class="line">        args = params</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="comment">// 如果已有延迟执行函数（later），调用的时候清除原来的并重新设定一个</span></span><br><span class="line">    <span class="comment">// 这样做延迟函数会重新计时</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">      timer = later()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>apply</code>是指向window的。因为 sayHi 函数定义在全局中，所以调用时里面this指向window，<br>所以才需要加上 apply，显示绑定 this 值(input对象)到 sayH 函数里面去。这里的箭头函数依旧是指向 input 对象。</p>
+<h6 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * underscore 节流函数，返回函数连续调用时，func 执行频率限定为 次 / wait</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param  &#123;function&#125;   func      回调函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;number&#125;     wait      表示时间窗口的间隔</span></span><br><span class="line"><span class="comment"> * @param  &#123;object&#125;     options   如果想忽略开始函数的的调用，传入&#123;leading: false&#125;。</span></span><br><span class="line"><span class="comment"> *                                如果想忽略结尾函数的调用，传入&#123;trailing: false&#125;</span></span><br><span class="line"><span class="comment"> *                                两者不能共存，否则函数不能执行</span></span><br><span class="line"><span class="comment"> * @return &#123;function&#125;             返回客户调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">_.throttle = <span class="function"><span class="keyword">function</span>(<span class="params">func, wait, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context, args, result;</span><br><span class="line">    <span class="keyword">var</span> timeout = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// 之前的时间戳</span></span><br><span class="line">    <span class="keyword">var</span> previous = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 如果 options 没传则设为空对象</span></span><br><span class="line">    <span class="keyword">if</span> (!options) options = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 定时器回调函数</span></span><br><span class="line">    <span class="keyword">var</span> later = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 如果设置了 leading，就将 previous 设为 0</span></span><br><span class="line">      <span class="comment">// 用于下面函数的第一个 if 判断</span></span><br><span class="line">      previous = options.leading === <span class="literal">false</span> ? <span class="number">0</span> : _.now();</span><br><span class="line">      <span class="comment">// 置空一是为了防止内存泄漏，二是为了下面的定时器判断</span></span><br><span class="line">      timeout = <span class="literal">null</span>;</span><br><span class="line">      result = func.apply(context, args);</span><br><span class="line">      <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 获得当前时间戳</span></span><br><span class="line">      <span class="keyword">var</span> now = _.now();</span><br><span class="line">      <span class="comment">// 首次进入前者肯定为 true</span></span><br><span class="line">	  <span class="comment">// 如果需要第一次不执行函数</span></span><br><span class="line">	  <span class="comment">// 就将上次时间戳设为当前的</span></span><br><span class="line">      <span class="comment">// 这样在接下来计算 remaining 的值时会大于0</span></span><br><span class="line">      <span class="keyword">if</span> (!previous &amp;&amp; options.leading === <span class="literal">false</span>) previous = now;</span><br><span class="line">      <span class="comment">// 计算剩余时间</span></span><br><span class="line">      <span class="keyword">var</span> remaining = wait - (now - previous);</span><br><span class="line">      context = <span class="keyword">this</span>;</span><br><span class="line">      args = <span class="built_in">arguments</span>;</span><br><span class="line">      <span class="comment">// 如果当前调用已经大于上次调用时间 + wait</span></span><br><span class="line">      <span class="comment">// 或者用户手动调了时间</span></span><br><span class="line"> 	  <span class="comment">// 如果设置了 trailing，只会进入这个条件</span></span><br><span class="line">	  <span class="comment">// 如果没有设置 leading，那么第一次会进入这个条件</span></span><br><span class="line">	  <span class="comment">// 还有一点，你可能会觉得开启了定时器那么应该不会进入这个 if 条件了</span></span><br><span class="line">	  <span class="comment">// 其实还是会进入的，因为定时器的延时</span></span><br><span class="line">	  <span class="comment">// 并不是准确的时间，很可能你设置了2秒</span></span><br><span class="line">	  <span class="comment">// 但是他需要2.2秒才触发，这时候就会进入这个条件</span></span><br><span class="line">      <span class="keyword">if</span> (remaining &lt;= <span class="number">0</span> || remaining &gt; wait) &#123;</span><br><span class="line">        <span class="comment">// 如果存在定时器就清理掉否则会调用二次回调</span></span><br><span class="line">        <span class="keyword">if</span> (timeout) &#123;</span><br><span class="line">          clearTimeout(timeout);</span><br><span class="line">          timeout = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        previous = now;</span><br><span class="line">        result = func.apply(context, args);</span><br><span class="line">        <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!timeout &amp;&amp; options.trailing !== <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="comment">// 判断是否设置了定时器和 trailing</span></span><br><span class="line">	    <span class="comment">// 没有的话就开启一个定时器</span></span><br><span class="line">        <span class="comment">// 并且不能不能同时设置 leading 和 trailing</span></span><br><span class="line">        timeout = setTimeout(later, remaining);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="移动端没有原生的拖动事件"><a href="#移动端没有原生的拖动事件" class="headerlink" title="移动端没有原生的拖动事件"></a>移动端没有原生的拖动事件</h4><p>drag事件仅仅支持pc端，简单情况可以用touch事件替换。复杂一点可以用vue-dragging组件。</p>
+<h4 id="获取dom"><a href="#获取dom" class="headerlink" title="获取dom"></a>获取dom</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getElementById </span><br><span class="line">getElementsByClassName  TagName </span><br><span class="line">querySelectorAll </span><br><span class="line">querySelector</span><br></pre></td></tr></table></figure>
+
+<h4 id="jquery调用接口"><a href="#jquery调用接口" class="headerlink" title="jquery调用接口"></a>jquery调用接口</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">jquery ajax拼接token到request-header</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">                        headers:&#123;</span><br><span class="line">                            <span class="string">"access_token"</span>:<span class="keyword">this</span>.token</span><br><span class="line">                        &#125;,</span><br><span class="line">                        url: <span class="string">"https://new.icity24.xyz/openlock-shiyan/findArea/getArea"</span>,</span><br><span class="line">                        dataType: <span class="string">"json"</span>, <span class="comment">//服务器返回json格式数据</span></span><br><span class="line">                        type: <span class="string">"post"</span>, <span class="comment">//HTTP请求类型</span></span><br><span class="line">                        timeout: <span class="number">10000</span>, <span class="comment">//超时时间设置为10秒；</span></span><br><span class="line">                        contentType: <span class="string">"application/x-www-form-urlencoded"</span>,</span><br><span class="line">                        data: &#123;</span><br><span class="line">                            area: <span class="keyword">this</span>.location,</span><br><span class="line">                            name: <span class="keyword">this</span>.inputVal</span><br><span class="line">                        &#125;,</span><br><span class="line">                        success: <span class="function"><span class="keyword">function</span> (<span class="params">resp</span>) </span>&#123;</span><br><span class="line">                            <span class="keyword">if</span> (resp.data.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                                ctx.isList = <span class="literal">true</span></span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                ctx.isList = <span class="literal">false</span>;</span><br><span class="line">                                ctx.isEmpty = <span class="literal">true</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            ctx.compamyList = resp.data</span><br><span class="line">                        &#125;,</span><br><span class="line">                        error: <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">"err"</span>, err);</span><br><span class="line">                            loading.hide();</span><br><span class="line">                            ctx.$imui.toast.show(<span class="string">"第三方接口异常"</span>, <span class="number">1000</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h4><p> date对象的问题，date对象返回的时间都是通用协调时(UTC, Universal Time Coordinated)。UTC与格林尼治平均时(GMT, Greenwich Mean Time)一样，都与英国伦敦的本地时相同。比北京时间慢了8个小时。</p>
+<p> 输入就输入本地时间，他会自动转换为UTC时间。 </p>
+<p>注意IOS不能 使用new Date(2019-01-02),会显示NaN，直接new Date 获取此时时间，或者用/。 </p>
+<h4 id="return-break-continue"><a href="#return-break-continue" class="headerlink" title="return break continue"></a>return break continue</h4><h5 id="return用于if或者函数中"><a href="#return用于if或者函数中" class="headerlink" title="return用于if或者函数中"></a>return用于if或者函数中</h5><p>用了return就终止执行，跳出大圈，后面的代码都不会执行。</p>
+<p>return; return true;return false;</p>
+<h5 id="break-continue用于退出循环或者在switch语句中跳出case"><a href="#break-continue用于退出循环或者在switch语句中跳出case" class="headerlink" title="break continue用于退出循环或者在switch语句中跳出case"></a>break continue用于退出循环或者在switch语句中跳出case</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i===<span class="number">6</span>)&#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"end"</span>)</span><br><span class="line"><span class="comment">//012345end                     break只是退出循环，并不会终止后面代码的执行</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i===<span class="number">6</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"end"</span>)</span><br><span class="line"><span class="comment">//012345                        rerurn终止了后面代码的执行</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i===<span class="number">6</span>)&#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"end"</span>)</span><br><span class="line"><span class="comment">//012345789end 不输出6           continue退出循环后又接着循环执行</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不加break就会全部输出，起不到选择的作用</span></span><br><span class="line"><span class="keyword">switch</span> (x) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'x 等于1'</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'x 等于2'</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'x 等于其他值'</span>);</span><br><span class="line">&#125;</span><br><span class="line">                             <span class="keyword">switch</span>中</span><br></pre></td></tr></table></figure>
+
+<h4 id="属性名"><a href="#属性名" class="headerlink" title="属性名"></a>属性名</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">properties[someName]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>对象属性的特殊写法，当属性名是变量（不确定是哪个字符串）的时候需要这么写，因为<code>properties.someName</code>的写法要求<code>someName</code>是字符串</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/11/JS挖坑填坑/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'c38df660ef9628c41489',
+  	clientSecret: 'caf165cb00c569dc41456a165a242b096250530e',
+  	repo: 'mycoments',
+  	owner: 'clark-cui',
+  	admin: ['clark-cui'],
+  	id: '',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1632,15 +1735,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1648,15 +1743,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1664,11 +1751,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1676,7 +1763,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">初衷</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1689,6 +1788,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
               </li>
              
               <li class="article-tag-list-item">
