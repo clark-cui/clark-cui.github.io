@@ -1,2 +1,2 @@
 # 我的hexo博客
-blog.clark-cui.top
+https://blog.clark-cui.top
